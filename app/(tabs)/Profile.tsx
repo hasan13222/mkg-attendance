@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import { useTheme } from "@react-navigation/native";
-import {
-  ScrollView,
-  StyleSheet,
-  View,
-} from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import Collapsible from "react-native-collapsible";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { GlobalStyleSheet } from "@/constants/StyleSheet";
@@ -12,6 +8,8 @@ import { COLORS, SIZES } from "@/constants/theme";
 import ListStyle1 from "@/components/ListStyle1";
 import Header from "@/components/Header";
 import { Link } from "expo-router";
+import { Text } from "react-native";
+import { useGetAllPostsQuery } from "@/redux/reducer/test";
 
 const Profile = () => {
   const { colors } = useTheme();
@@ -21,6 +19,8 @@ const Profile = () => {
   const [isCollapsed4, setIsCollapsed4] = useState(true);
   const [isCollapsed5, setIsCollapsed5] = useState(true);
 
+  // const {isFetching: isLoading, isError, currentData, error} = useGetAllPostsQuery();
+
   return (
     <>
       <View
@@ -29,8 +29,14 @@ const Profile = () => {
           backgroundColor: colors.background,
         }}
       >
-        <Header paddingTop={15} paddingBottom={15} title={"Classes"} bgWhite/>
+        <Header paddingTop={15} paddingBottom={15} title={"Classes"} bgWhite />
         <ScrollView>
+          {/* <View>
+            <Text>{isLoading && "Loading"}</Text>
+            <Text>{!isLoading && "NOt Loading"}</Text>
+            <Text>{currentData[0].email}</Text>
+            <Text></Text>
+          </View> */}
           <View style={GlobalStyleSheet.container}>
             <View
               style={[
@@ -56,10 +62,7 @@ const Profile = () => {
                 />
                 <Collapsible collapsed={isCollapsed}>
                   <View style={{ paddingLeft: 20 }}>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
+                    <Link href={"/Students"} asChild>
                       <ListStyle1
                         arrowRight
                         icon={
@@ -73,10 +76,7 @@ const Profile = () => {
                       />
                     </Link>
 
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
+                    <Link href={"/Students"} asChild>
                       <ListStyle1
                         arrowRight
                         icon={
@@ -89,10 +89,7 @@ const Profile = () => {
                         title={"Physics"}
                       />
                     </Link>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
+                    <Link href={"/Students"} asChild>
                       <ListStyle1
                         arrowRight
                         icon={
@@ -105,10 +102,7 @@ const Profile = () => {
                         title={"Physics"}
                       />
                     </Link>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
+                    <Link href={"/Students"} asChild>
                       <ListStyle1
                         arrowRight
                         icon={
@@ -121,10 +115,7 @@ const Profile = () => {
                         title={"Physics"}
                       />
                     </Link>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
+                    <Link href={"/Students"} asChild>
                       <ListStyle1
                         arrowRight
                         icon={
@@ -156,10 +147,7 @@ const Profile = () => {
                 />
                 <Collapsible collapsed={isCollapsed2}>
                   <View style={{ paddingLeft: 20 }}>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
+                    <Link href={"/Students"} asChild>
                       <ListStyle1
                         arrowRight
                         icon={
@@ -172,10 +160,7 @@ const Profile = () => {
                         title={"Physics"}
                       />
                     </Link>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
+                    <Link href={"/Students"} asChild>
                       <ListStyle1
                         arrowRight
                         icon={
@@ -188,10 +173,7 @@ const Profile = () => {
                         title={"Physics"}
                       />
                     </Link>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
+                    <Link href={"/Students"} asChild>
                       <ListStyle1
                         arrowRight
                         icon={
@@ -204,10 +186,7 @@ const Profile = () => {
                         title={"Physics"}
                       />
                     </Link>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
+                    <Link href={"/Students"} asChild>
                       <ListStyle1
                         arrowRight
                         icon={
@@ -220,10 +199,7 @@ const Profile = () => {
                         title={"Physics"}
                       />
                     </Link>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
+                    <Link href={"/Students"} asChild>
                       <ListStyle1
                         arrowRight
                         icon={
@@ -255,10 +231,7 @@ const Profile = () => {
                 />
                 <Collapsible collapsed={isCollapsed3}>
                   <View style={{ paddingLeft: 20 }}>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
+                    <Link href={"/Students"} asChild>
                       <ListStyle1
                         arrowRight
                         icon={
@@ -271,10 +244,7 @@ const Profile = () => {
                         title={"Physics"}
                       />
                     </Link>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
+                    <Link href={"/Students"} asChild>
                       <ListStyle1
                         arrowRight
                         icon={
@@ -287,10 +257,7 @@ const Profile = () => {
                         title={"Physics"}
                       />
                     </Link>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
+                    <Link href={"/Students"} asChild>
                       <ListStyle1
                         arrowRight
                         icon={
@@ -303,10 +270,7 @@ const Profile = () => {
                         title={"Physics"}
                       />
                     </Link>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
+                    <Link href={"/Students"} asChild>
                       <ListStyle1
                         arrowRight
                         icon={
@@ -319,10 +283,7 @@ const Profile = () => {
                         title={"Physics"}
                       />
                     </Link>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
+                    <Link href={"/Students"} asChild>
                       <ListStyle1
                         arrowRight
                         icon={
@@ -354,10 +315,7 @@ const Profile = () => {
                 />
                 <Collapsible collapsed={isCollapsed4}>
                   <View style={{ paddingLeft: 20 }}>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
+                    <Link href={"/Students"} asChild>
                       <ListStyle1
                         arrowRight
                         icon={
@@ -370,10 +328,7 @@ const Profile = () => {
                         title={"Physics"}
                       />
                     </Link>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
+                    <Link href={"/Students"} asChild>
                       <ListStyle1
                         arrowRight
                         icon={
@@ -386,10 +341,7 @@ const Profile = () => {
                         title={"Physics"}
                       />
                     </Link>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
+                    <Link href={"/Students"} asChild>
                       <ListStyle1
                         arrowRight
                         icon={
@@ -402,10 +354,7 @@ const Profile = () => {
                         title={"Physics"}
                       />
                     </Link>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
+                    <Link href={"/Students"} asChild>
                       <ListStyle1
                         arrowRight
                         icon={
@@ -418,10 +367,7 @@ const Profile = () => {
                         title={"Physics"}
                       />
                     </Link>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
+                    <Link href={"/Students"} asChild>
                       <ListStyle1
                         arrowRight
                         icon={
@@ -453,10 +399,7 @@ const Profile = () => {
                 />
                 <Collapsible collapsed={isCollapsed5}>
                   <View style={{ paddingLeft: 20 }}>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
+                    <Link href={"/Students"} asChild>
                       <ListStyle1
                         arrowRight
                         icon={
@@ -469,10 +412,7 @@ const Profile = () => {
                         title={"Physics"}
                       />
                     </Link>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
+                    <Link href={"/Students"} asChild>
                       <ListStyle1
                         arrowRight
                         icon={
@@ -485,10 +425,7 @@ const Profile = () => {
                         title={"Physics"}
                       />
                     </Link>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
+                    <Link href={"/Students"} asChild>
                       <ListStyle1
                         arrowRight
                         icon={
@@ -501,10 +438,7 @@ const Profile = () => {
                         title={"Physics"}
                       />
                     </Link>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
+                    <Link href={"/Students"} asChild>
                       <ListStyle1
                         arrowRight
                         icon={
@@ -517,10 +451,7 @@ const Profile = () => {
                         title={"Physics"}
                       />
                     </Link>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
+                    <Link href={"/Students"} asChild>
                       <ListStyle1
                         arrowRight
                         icon={

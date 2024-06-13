@@ -16,10 +16,13 @@ import CustomButton from "./CustomButton";
 import { GlobalStyleSheet } from "../constants/StyleSheet";
 import { COLORS, FONTS, SIZES, IMAGES, ICONS } from "../constants/theme";
 import { SvgXml } from "react-native-svg";
+import { useDispatch } from "react-redux";
+import { setUser } from "@/redux/reducer/userLogin";
 
-const SignIn = ({ setUser }) => {
+const SignIn = () => {
   const { colors } = useTheme();
   const [passwordShow, setPasswordShow] = useState(true);
+  const dispatch = useDispatch();
 
   const handndleShowPassword = () => {
     setPasswordShow(!passwordShow);
@@ -151,7 +154,7 @@ const SignIn = ({ setUser }) => {
                   </TouchableOpacity>
                 </View>
                 <View style={{ paddingBottom: 5 }}>
-                  <CustomButton onPress={() => setUser(true)} title="SIGN IN" />
+                  <CustomButton onPress={() => dispatch(setUser(true))} title="SIGN IN" />
                 </View>
                 <View
                   style={{

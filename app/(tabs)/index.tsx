@@ -1,570 +1,103 @@
-import React, { useState } from "react";
-import { useTheme } from "@react-navigation/native";
+import React, { useRef } from "react";
+import { FlatList, Image, Text, View } from "react-native";
+import { ScrollView } from "react-native";
+import { dashboardSliderData } from "./../../constants/dashboardSliderData";
+import CardStyle4 from "@/components/CardStyle4";
 import {
-  ScrollView,
-  StyleSheet,
-  View,
-} from "react-native";
-import Collapsible from "react-native-collapsible";
-import FontAwesome from "react-native-vector-icons/FontAwesome";
-import { GlobalStyleSheet } from "@/constants/StyleSheet";
-import { COLORS, SIZES } from "@/constants/theme";
-import ListStyle1 from "@/components/ListStyle1";
-import Header from "@/components/Header";
-import { Link } from "expo-router";
+  DrawerLayout,
+  GestureHandlerRootView,
+} from "react-native-gesture-handler";
+import { SafeAreaView } from "react-native";
+import DrawerMenu from "@/components/DrawerMenu";
+import { useTheme } from "@react-navigation/native";
+import HeaderMenu from "@/components/HeaderMenu";
+import { TouchableOpacity } from "react-native";
+import { COLORS, FONTS } from "@/constants/theme";
+import FontawesomeIcon from "@expo/vector-icons/FontAwesome";
+import { StatusBar } from "react-native";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/reducer";
+import SignIn from "@/components/login";
 
-const Home = () => {
+const Home = (drawerProps) => {
+  const drawerRef = useRef();
   const { colors } = useTheme();
-  const [isCollapsed, setIsCollapsed] = useState(true);
-  const [isCollapsed2, setIsCollapsed2] = useState(true);
-  const [isCollapsed3, setIsCollapsed3] = useState(true);
-  const [isCollapsed4, setIsCollapsed4] = useState(true);
-  const [isCollapsed5, setIsCollapsed5] = useState(true);
 
-  return (
-    <>
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: colors.background,
-        }}
-      >
-        <Header paddingTop={15} paddingBottom={15} title={"Classes"} bgWhite/>
-        <ScrollView>
-          <View style={GlobalStyleSheet.container}>
-            <View
-              style={[
-                styles.card,
-                {
-                  backgroundColor: colors.card,
-                  paddingVertical: 0,
-                },
-              ]}
-            >
-              <View>
-                <ListStyle1
-                  arrowDown
-                  onPress={() => setIsCollapsed(!isCollapsed)}
-                  icon={
-                    <FontAwesome
-                      name={"building"}
-                      size={15}
-                      color={COLORS.red}
-                    />
-                  }
-                  title={"Class Two"}
-                />
-                <Collapsible collapsed={isCollapsed}>
-                  <View style={{ paddingLeft: 20 }}>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
-                      <ListStyle1
-                        arrowRight
-                        icon={
-                          <FontAwesome
-                            name={"book"}
-                            size={15}
-                            color={"#3b5998"}
-                          />
-                        }
-                        title={"Physics"}
-                      />
-                    </Link>
-
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
-                      <ListStyle1
-                        arrowRight
-                        icon={
-                          <FontAwesome
-                            name={"book"}
-                            size={15}
-                            color={"#3b5998"}
-                          />
-                        }
-                        title={"Physics"}
-                      />
-                    </Link>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
-                      <ListStyle1
-                        arrowRight
-                        icon={
-                          <FontAwesome
-                            name={"book"}
-                            size={15}
-                            color={"#3b5998"}
-                          />
-                        }
-                        title={"Physics"}
-                      />
-                    </Link>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
-                      <ListStyle1
-                        arrowRight
-                        icon={
-                          <FontAwesome
-                            name={"book"}
-                            size={15}
-                            color={"#3b5998"}
-                          />
-                        }
-                        title={"Physics"}
-                      />
-                    </Link>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
-                      <ListStyle1
-                        arrowRight
-                        icon={
-                          <FontAwesome
-                            name={"book"}
-                            size={15}
-                            color={"#3b5998"}
-                          />
-                        }
-                        title={"Physics"}
-                      />
-                    </Link>
-                  </View>
-                </Collapsible>
-              </View>
-
-              <View>
-                <ListStyle1
-                  arrowDown
-                  onPress={() => setIsCollapsed2(!isCollapsed2)}
-                  icon={
-                    <FontAwesome
-                      name={"building"}
-                      size={15}
-                      color={COLORS.red}
-                    />
-                  }
-                  title={"Class One"}
-                />
-                <Collapsible collapsed={isCollapsed2}>
-                  <View style={{ paddingLeft: 20 }}>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
-                      <ListStyle1
-                        arrowRight
-                        icon={
-                          <FontAwesome
-                            name={"book"}
-                            size={15}
-                            color={"#3b5998"}
-                          />
-                        }
-                        title={"Physics"}
-                      />
-                    </Link>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
-                      <ListStyle1
-                        arrowRight
-                        icon={
-                          <FontAwesome
-                            name={"book"}
-                            size={15}
-                            color={"#3b5998"}
-                          />
-                        }
-                        title={"Physics"}
-                      />
-                    </Link>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
-                      <ListStyle1
-                        arrowRight
-                        icon={
-                          <FontAwesome
-                            name={"book"}
-                            size={15}
-                            color={"#3b5998"}
-                          />
-                        }
-                        title={"Physics"}
-                      />
-                    </Link>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
-                      <ListStyle1
-                        arrowRight
-                        icon={
-                          <FontAwesome
-                            name={"book"}
-                            size={15}
-                            color={"#3b5998"}
-                          />
-                        }
-                        title={"Physics"}
-                      />
-                    </Link>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
-                      <ListStyle1
-                        arrowRight
-                        icon={
-                          <FontAwesome
-                            name={"book"}
-                            size={15}
-                            color={"#3b5998"}
-                          />
-                        }
-                        title={"Physics"}
-                      />
-                    </Link>
-                  </View>
-                </Collapsible>
-              </View>
-
-              <View>
-                <ListStyle1
-                  arrowDown
-                  onPress={() => setIsCollapsed3(!isCollapsed3)}
-                  icon={
-                    <FontAwesome
-                      name={"building"}
-                      size={15}
-                      color={COLORS.red}
-                    />
-                  }
-                  title={"Class Three"}
-                />
-                <Collapsible collapsed={isCollapsed3}>
-                  <View style={{ paddingLeft: 20 }}>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
-                      <ListStyle1
-                        arrowRight
-                        icon={
-                          <FontAwesome
-                            name={"book"}
-                            size={15}
-                            color={"#3b5998"}
-                          />
-                        }
-                        title={"Physics"}
-                      />
-                    </Link>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
-                      <ListStyle1
-                        arrowRight
-                        icon={
-                          <FontAwesome
-                            name={"book"}
-                            size={15}
-                            color={"#3b5998"}
-                          />
-                        }
-                        title={"Physics"}
-                      />
-                    </Link>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
-                      <ListStyle1
-                        arrowRight
-                        icon={
-                          <FontAwesome
-                            name={"book"}
-                            size={15}
-                            color={"#3b5998"}
-                          />
-                        }
-                        title={"Physics"}
-                      />
-                    </Link>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
-                      <ListStyle1
-                        arrowRight
-                        icon={
-                          <FontAwesome
-                            name={"book"}
-                            size={15}
-                            color={"#3b5998"}
-                          />
-                        }
-                        title={"Physics"}
-                      />
-                    </Link>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
-                      <ListStyle1
-                        arrowRight
-                        icon={
-                          <FontAwesome
-                            name={"book"}
-                            size={15}
-                            color={"#3b5998"}
-                          />
-                        }
-                        title={"Physics"}
-                      />
-                    </Link>
-                  </View>
-                </Collapsible>
-              </View>
-
-              <View>
-                <ListStyle1
-                  arrowDown
-                  onPress={() => setIsCollapsed4(!isCollapsed4)}
-                  icon={
-                    <FontAwesome
-                      name={"building"}
-                      size={15}
-                      color={COLORS.red}
-                    />
-                  }
-                  title={"Class Four"}
-                />
-                <Collapsible collapsed={isCollapsed4}>
-                  <View style={{ paddingLeft: 20 }}>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
-                      <ListStyle1
-                        arrowRight
-                        icon={
-                          <FontAwesome
-                            name={"book"}
-                            size={15}
-                            color={"#3b5998"}
-                          />
-                        }
-                        title={"Physics"}
-                      />
-                    </Link>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
-                      <ListStyle1
-                        arrowRight
-                        icon={
-                          <FontAwesome
-                            name={"book"}
-                            size={15}
-                            color={"#3b5998"}
-                          />
-                        }
-                        title={"Physics"}
-                      />
-                    </Link>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
-                      <ListStyle1
-                        arrowRight
-                        icon={
-                          <FontAwesome
-                            name={"book"}
-                            size={15}
-                            color={"#3b5998"}
-                          />
-                        }
-                        title={"Physics"}
-                      />
-                    </Link>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
-                      <ListStyle1
-                        arrowRight
-                        icon={
-                          <FontAwesome
-                            name={"book"}
-                            size={15}
-                            color={"#3b5998"}
-                          />
-                        }
-                        title={"Physics"}
-                      />
-                    </Link>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
-                      <ListStyle1
-                        arrowRight
-                        icon={
-                          <FontAwesome
-                            name={"book"}
-                            size={15}
-                            color={"#3b5998"}
-                          />
-                        }
-                        title={"Physics"}
-                      />
-                    </Link>
-                  </View>
-                </Collapsible>
-              </View>
-
-              <View>
-                <ListStyle1
-                  arrowDown
-                  onPress={() => setIsCollapsed5(!isCollapsed5)}
-                  icon={
-                    <FontAwesome
-                      name={"building"}
-                      size={15}
-                      color={COLORS.red}
-                    />
-                  }
-                  title={"Class Five 12"}
-                />
-                <Collapsible collapsed={isCollapsed5}>
-                  <View style={{ paddingLeft: 20 }}>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
-                      <ListStyle1
-                        arrowRight
-                        icon={
-                          <FontAwesome
-                            name={"book"}
-                            size={15}
-                            color={"#3b5998"}
-                          />
-                        }
-                        title={"Physics"}
-                      />
-                    </Link>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
-                      <ListStyle1
-                        arrowRight
-                        icon={
-                          <FontAwesome
-                            name={"book"}
-                            size={15}
-                            color={"#3b5998"}
-                          />
-                        }
-                        title={"Physics"}
-                      />
-                    </Link>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
-                      <ListStyle1
-                        arrowRight
-                        icon={
-                          <FontAwesome
-                            name={"book"}
-                            size={15}
-                            color={"#3b5998"}
-                          />
-                        }
-                        title={"Physics"}
-                      />
-                    </Link>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
-                      <ListStyle1
-                        arrowRight
-                        icon={
-                          <FontAwesome
-                            name={"book"}
-                            size={15}
-                            color={"#3b5998"}
-                          />
-                        }
-                        title={"Physics"}
-                      />
-                    </Link>
-                    <Link
-                      href={'/Students'}
-                      asChild
-                    >
-                      <ListStyle1
-                        arrowRight
-                        icon={
-                          <FontAwesome
-                            name={"book"}
-                            size={15}
-                            color={"#3b5998"}
-                          />
-                        }
-                        title={"Physics"}
-                      />
-                    </Link>
-                  </View>
-                </Collapsible>
-              </View>
-            </View>
+  const renderItem = ({ item }) => {
+    return (
+      <>
+        <TouchableOpacity
+          style={{
+            alignItems: "center",
+            marginRight: 16,
+          }}
+        >
+          <View
+            style={{
+              backgroundColor: colors.card,
+              paddingHorizontal: 18,
+              paddingVertical: 15,
+              borderRadius: 35,
+              marginBottom: 7,
+            }}
+          >
+            <FontawesomeIcon
+              size={40}
+              color={COLORS.danger}
+              name={item.iconName}
+            />
           </View>
-        </ScrollView>
-      </View>
-    </>
-  );
+          <Text style={{ ...FONTS.font, fontSize: 15, color: colors.text }}>
+            {item.title}
+          </Text>
+        </TouchableOpacity>
+      </>
+    );
+  };
+
+
+    return (
+      <>
+        {/* <StatusBar
+        backgroundColor={colors.card}
+        barStyle={"dark-content"}
+      /> */}
+        <GestureHandlerRootView>
+          <DrawerLayout
+            ref={drawerRef}
+            drawerWidth={280}
+            drawerPosition={DrawerLayout.positions.Left}
+            drawerType="front"
+            drawerBackgroundColor="#ddd"
+            renderNavigationView={() => <DrawerMenu drawerProps={drawerProps} drawer={drawerRef} />}
+          >
+            <SafeAreaView
+              style={{
+                flex: 1,
+                backgroundColor: "rgba(248,92,111,.05)",
+              }}
+            >
+              <HeaderMenu drawerProps={drawerProps} title="Home" />
+              <ScrollView>
+                <FlatList
+                  horizontal
+                  showsHorizontalScrollIndicator={false}
+                  contentContainerStyle={{
+                    paddingLeft: 15,
+                    paddingBottom: 10,
+                    paddingTop: 10,
+                  }}
+                  data={dashboardSliderData}
+                  keyExtractor={(item) => item.id}
+                  renderItem={renderItem}
+                />
+              </ScrollView>
+            </SafeAreaView>
+          </DrawerLayout>
+        </GestureHandlerRootView>
+      </>
+    );
+  
 };
-
-const styles = StyleSheet.create({
-  card: {
-    padding: 15,
-    borderRadius: SIZES.radius,
-    marginBottom: 15,
-    shadowColor: "rgba(0,0,0,.6)",
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    shadowOpacity: 0.3,
-    shadowRadius: 4.65,
-
-    elevation: 8,
-  },
-  listStyle: {
-    borderBottomWidth: 1,
-    paddingVertical: 16,
-    flexDirection: "row",
-    alignItems: "center",
-  },
-});
 
 export default Home;

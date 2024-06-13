@@ -5,15 +5,22 @@ import RNPickerSelect from "react-native-picker-select";
 import { COLORS, FONTS } from "@/constants/theme";
 import CustomButton from "@/components/CustomButton";
 import DateTimePicker from "@react-native-community/datetimepicker";
+import { Picker } from "@react-native-picker/picker";
 import { router } from "expo-router";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/redux/reducer";
+import { setClassVal, setDate, setDate2, setOpen, setOpen2, setSubjectVal } from "@/redux/reducer/reportSearch";
 
 const ReportSearch = (props) => {
-  const [date, setDate] = useState(new Date());
-  const [date2, setDate2] = useState(new Date());
-  const [open, setOpen] = useState(false);
-  const [open2, setOpen2] = useState(false);
-  const [classVal, setClassVal] = useState("");
-  const [subjectVal, setSubjectVal] = useState("");
+  // const [date, setDate] = useState(new Date());
+  // const [date2, setDate2] = useState(new Date());
+  // const [open, setOpen] = useState(false);
+  // const [open2, setOpen2] = useState(false);
+  // const [classVal, setClassVal] = useState("");
+  // const [subjectVal, setSubjectVal] = useState("");
+
+  const dispatch = useDispatch();
+  const {date, date2, classVal, subjectVal, open, open2 } = useSelector((state: RootState) => state.reportSearch)
 
   const { colors } = useTheme();
 
@@ -30,15 +37,19 @@ const ReportSearch = (props) => {
       alert("Please select a date range. your start and end date is same");
       return;
     }
-    router.navigate('/Reports')
+    router.navigate("/Reports");
   };
   const handleDatePick = (e, date) => {
-    setDate(date);
-    setOpen(false);
+    dispatch(setDate(date));
+    dispatch(setOpen(false));
+    // setDate(date);
+    // setOpen(false);
   };
   const handleDatePick2 = (e, date) => {
-    setDate2(date);
-    setOpen2(false);
+    dispatch(setDate2(date));
+    dispatch(setOpen2(false));
+    // setDate2(date);
+    // setOpen2(false);
   };
 
   return (
@@ -79,11 +90,11 @@ const ReportSearch = (props) => {
                   radius={5}
                   title={date.toDateString()}
                   color={COLORS.darkBg}
-                  onPress={() => setOpen(true)}
+                  onPress={() => dispatch(setOpen(true))}
                 />
                 {open && (
                   <DateTimePicker
-                    testID="dateTimePicker"
+                    testID="dateTimePicker3"
                     value={date}
                     mode={"date"}
                     is24Hour={true}
@@ -97,11 +108,11 @@ const ReportSearch = (props) => {
                   radius={5}
                   title={date2.toDateString()}
                   color={COLORS.darkBg}
-                  onPress={() => setOpen2(true)}
+                  onPress={() => dispatch(setOpen2(true))}
                 />
                 {open2 && (
                   <DateTimePicker
-                    testID="dateTimePicker2"
+                    testID="dateTimePicker4"
                     value={date}
                     mode={"date"}
                     is24Hour={true}
@@ -111,13 +122,11 @@ const ReportSearch = (props) => {
               </View>
             </View>
           </View>
-
           {/* select class */}
           <View>
             <Text style={{ fontSize: 18, paddingVertical: 10 }}>
               Select Class
             </Text>
-
             <View
               style={{
                 borderColor: COLORS.darkBg,
@@ -126,16 +135,21 @@ const ReportSearch = (props) => {
               }}
             >
               <RNPickerSelect
-                onValueChange={(value) => setClassVal(value)}
+                onValueChange={(value) => dispatch(setClassVal(value))}
                 items={[
-                  { label: "JavaScript", value: "JavaScript" },
-                  { label: "TypeScript", value: "TypeScript" },
-                  { label: "Python", value: "Python" },
-                  { label: "Java", value: "Java" },
-                  { label: "C++", value: "C++" },
-                  { label: "C", value: "C" },
+                  { label: "Class One", value: "one" },
+                  { label: "Class Two", value: "two" },
                 ]}
               />
+              {/* <Picker
+                selectedValue={classVal}
+                onValueChange={(itemValue, itemIndex) =>
+                  setClassVal(itemValue)
+                }
+              >
+                <Picker.Item label="Call One" value="java" />
+                <Picker.Item label="Class Two" value="js" />
+              </Picker> */}
             </View>
           </View>
 
@@ -153,16 +167,21 @@ const ReportSearch = (props) => {
               }}
             >
               <RNPickerSelect
-                onValueChange={(value) => setSubjectVal(value)}
+                onValueChange={(value) => dispatch(setSubjectVal(value))}
                 items={[
-                  { label: "JavaScript", value: "JavaScript" },
-                  { label: "TypeScript", value: "TypeScript" },
-                  { label: "Python", value: "Python" },
-                  { label: "Java", value: "Java" },
-                  { label: "C++", value: "C++" },
-                  { label: "C", value: "C" },
+                  { label: "Class One", value: "one" },
+                  { label: "Class Two", value: "two" },
                 ]}
               />
+              {/* <Picker
+                selectedValue={subjectVal}
+                onValueChange={(itemValue, itemIndex) =>
+                  setSubjectVal(itemValue)
+                }
+              >
+                <Picker.Item label="Physics" value="java" />
+                <Picker.Item label="Chemistry" value="js" />
+              </Picker> */}
             </View>
           </View>
 

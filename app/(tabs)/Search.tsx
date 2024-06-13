@@ -1,178 +1,519 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { useTheme } from "@react-navigation/native";
-import RNPickerSelect from "react-native-picker-select";
-import { COLORS, FONTS } from "@/constants/theme";
-import CustomButton from "@/components/CustomButton";
-import DateTimePicker from "@react-native-community/datetimepicker";
-import { router } from "expo-router";
+import { COLORS, FONTS, ICONS, SIZES } from "@/constants/theme";
+import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
+
+import FeatherIcon from "react-native-vector-icons/Feather";
+import EvilIconsIcon from "react-native-vector-icons/EvilIcons";
+import FontawesomeIcon from "react-native-vector-icons/FontAwesome";
+import { TextInput } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/redux/reducer";
+import { setShowSearchBox, setPartialPay, setFullPay, setCollect } from "@/redux/reducer/feeSearch";
 
 const Search = (props) => {
-  const [date, setDate] = useState(new Date());
-  const [date2, setDate2] = useState(new Date());
-  const [open, setOpen] = useState(false);
-  const [open2, setOpen2] = useState(false);
-  const [classVal, setClassVal] = useState("");
-  const [subjectVal, setSubjectVal] = useState("");
+  // const [showSearchBox, setShowSearchBox] = useState(false);
+  const dispatch = useDispatch();
+
+  const { showSearchBox, fullPay, partialPay } = useSelector(
+    (state: RootState) => state.feeSearch
+  );
 
   const { colors } = useTheme();
 
-  const handleSearch = () => {
-    if (!classVal) {
-      alert("Please select a class");
-      return;
-    }
-    if (!subjectVal) {
-      alert("Please select a subject");
-      return;
-    }
-    if (date.getDate() === date2.getDate()) {
-      alert("Please select a date range. your start and end date is same");
-      return;
-    }
-    router.navigate('/Reports')
-  };
-  const handleDatePick = (e, date) => {
-    setDate(date);
-    setOpen(false);
-  };
-  const handleDatePick2 = (e, date) => {
-    setDate2(date);
-    setOpen2(false);
-  };
-
   return (
     <>
-      <View
-        style={{
-          paddingHorizontal: 15,
-        }}
-      >
-        {/* title */}
-        <Text
+      <ScrollView>
+        <View
           style={{
-            ...FONTS.h4,
-            color: colors.text,
-            borderBottomWidth: 1,
-            paddingTop: 15,
-            paddingBottom: 8,
-            marginBottom: 10,
-            borderColor: colors.border,
+            paddingHorizontal: 15,
           }}
         >
-          Search Attendance Report
-        </Text>
+          {/* title */}
+          <Text
+            style={{
+              ...FONTS.h4,
+              color: colors.text,
+              borderBottomWidth: 1,
+              paddingTop: 15,
+              paddingBottom: 8,
+              marginBottom: 10,
+              borderColor: colors.border,
+            }}
+          >
+            Student Fees
+          </Text>
 
-        {/* main form */}
-        <View style={{ gap: 15 }}>
-          {/* date range */}
-          <View>
-            <Text style={{ fontSize: 18, paddingVertical: 10 }}>
-              Select Date Range
-            </Text>
-            <View
-              style={{ justifyContent: "space-between", flexDirection: "row" }}
+          {/* Search */}
+          <View style={{ flexDirection: "row", gap: 10, marginBottom: 15 }}>
+            <TextInput
+              style={{
+                height: 42,
+                flexGrow: 1,
+                backgroundColor: colors.card,
+                paddingHorizontal: 15,
+                borderRadius: 10,
+                color: colors.text,
+              }}
+              placeholder="Search Here"
+              placeholderTextColor={colors.text}
+            />
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={() => dispatch(setShowSearchBox(!showSearchBox))}
+              style={[
+                {
+                  backgroundColor: "#AF1254",
+                  paddingHorizontal: 13,
+                  paddingVertical: 10,
+                  borderRadius: 5,
+                  alignItems: "center",
+                },
+              ]}
             >
-              <View>
-                <Text>Start Date</Text>
-                <CustomButton
-                  radius={5}
-                  title={date.toDateString()}
-                  color={COLORS.darkBg}
-                  onPress={() => setOpen(true)}
-                />
-                {open && (
-                  <DateTimePicker
-                    testID="dateTimePicker"
-                    value={date}
-                    mode={"date"}
-                    is24Hour={true}
-                    onChange={handleDatePick}
-                  />
-                )}
-              </View>
-              <View>
-                <Text>End Date</Text>
-                <CustomButton
-                  radius={5}
-                  title={date2.toDateString()}
-                  color={COLORS.darkBg}
-                  onPress={() => setOpen2(true)}
-                />
-                {open2 && (
-                  <DateTimePicker
-                    testID="dateTimePicker2"
-                    value={date}
-                    mode={"date"}
-                    is24Hour={true}
-                    onChange={handleDatePick2}
-                  />
-                )}
-              </View>
-            </View>
+              <FeatherIcon name="search" size={22} color={COLORS.white} />
+            </TouchableOpacity>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              style={[
+                {
+                  backgroundColor: "#AF1254",
+                  paddingHorizontal: 13,
+                  paddingVertical: 10,
+                  borderRadius: 5,
+                  alignItems: "center",
+                },
+              ]}
+            >
+              <FontawesomeIcon name="qrcode" size={22} color={COLORS.white} />
+            </TouchableOpacity>
           </View>
 
-          {/* select class */}
-          <View>
-            <Text style={{ fontSize: 18, paddingVertical: 10 }}>
-              Select Class
-            </Text>
-
+          {/* student details */}
+          <View
+            style={[
+              styles.card,
+              {
+                backgroundColor: colors.card,
+              },
+            ]}
+          >
             <View
               style={{
-                borderColor: COLORS.darkBg,
-                borderWidth: 1,
-                borderRadius: 5,
+                borderBottomWidth: 1,
+                borderColor: colors.border,
+                paddingBottom: 8,
+                marginBottom: 10,
               }}
             >
-              <RNPickerSelect
-                onValueChange={(value) => setClassVal(value)}
-                items={[
-                  { label: "JavaScript", value: "JavaScript" },
-                  { label: "TypeScript", value: "TypeScript" },
-                  { label: "Python", value: "Python" },
-                  { label: "Java", value: "Java" },
-                  { label: "C++", value: "C++" },
-                  { label: "C", value: "C" },
-                ]}
-              />
+              <Text style={{ ...FONTS.h5, color: colors.text }}>
+                Student Details
+              </Text>
+            </View>
+
+            <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
+              <Text
+                style={{
+                  ...styles.listStyle,
+                  width: "60%",
+                  ...FONTS.font,
+                  ...FONTS.fontPoppins,
+                  color: colors.text,
+                }}
+              >
+                Name: Md. Sabir Ali
+              </Text>
+
+              <Text
+                style={{
+                  ...styles.listStyle,
+                  width: "40%",
+                  ...FONTS.font,
+                  ...FONTS.fontPoppins,
+                  color: colors.text,
+                }}
+              >
+                Roll: 12
+              </Text>
+
+              <Text
+                style={{
+                  ...styles.listStyle,
+                  width: "60%",
+                  ...FONTS.font,
+                  ...FONTS.fontPoppins,
+                  color: colors.text,
+                }}
+              >
+                Gurdian: Eakub Ali
+              </Text>
+              <Text
+                style={{
+                  ...styles.listStyle,
+                  width: "40%",
+                  ...FONTS.font,
+                  ...FONTS.fontPoppins,
+                  color: colors.text,
+                }}
+              >
+                Class: Six
+              </Text>
             </View>
           </View>
 
-          {/* select subject */}
-          <View>
-            <Text style={{ fontSize: 18, paddingVertical: 10 }}>
-              Select Subject
-            </Text>
+          {/* search result */}
+          <View
+            style={{
+              backgroundColor: colors.card,
+              borderRadius: SIZES.radius,
+              marginTop: 0,
+              marginBottom: 15,
+              shadowColor: "rgba(0,0,0,.6)",
+              shadowOffset: {
+                width: 0,
+                height: 4,
+              },
+              shadowOpacity: 0.3,
+              shadowRadius: 4.65,
 
+              elevation: 8,
+            }}
+          >
             <View
               style={{
-                borderColor: COLORS.darkBg,
-                borderWidth: 1,
-                borderRadius: 5,
+                alignSelf: "stretch",
+                flexDirection: "row",
+                borderBottomWidth: 1,
+                borderColor: colors.border,
               }}
             >
-              <RNPickerSelect
-                onValueChange={(value) => setSubjectVal(value)}
-                items={[
-                  { label: "JavaScript", value: "JavaScript" },
-                  { label: "TypeScript", value: "TypeScript" },
-                  { label: "Python", value: "Python" },
-                  { label: "Java", value: "Java" },
-                  { label: "C++", value: "C++" },
-                  { label: "C", value: "C" },
-                ]}
-              />
+              <Text
+                style={{
+                  ...styles.theadItem,
+                  color: colors.text,
+                  paddingLeft: 15,
+                  fontWeight: "condensedBold",
+                }}
+              >
+                Fee Type
+              </Text>
+              <Text
+                style={{
+                  ...styles.theadItem,
+                  color: colors.text,
+                  fontWeight: "condensedBold",
+                }}
+              >
+                Discount
+              </Text>
+              <Text
+                style={{
+                  ...styles.theadItem,
+                  color: colors.text,
+                  fontWeight: "condensedBold",
+                }}
+              >
+                Amount
+              </Text>
+              <Text
+                style={{
+                  ...styles.theadItem,
+                  color: colors.text,
+                  paddingRight: 15,
+                  fontWeight: "condensedBold",
+                }}
+              >
+                Action
+              </Text>
+            </View>
+            <View
+              style={{
+                alignSelf: "stretch",
+                flexDirection: "row",
+              }}
+            >
+              <Text
+                style={{
+                  ...styles.tbodyItem,
+                  paddingVertical: 10,
+                  color: colors.text,
+                  paddingLeft: 15,
+                  fontWeight: "condensedBold",
+                }}
+              >
+                May Fee
+              </Text>
+
+              <View
+                style={{
+                  ...styles.tbodyItem,
+                }}
+              >
+                <TextInput
+                  style={{
+                    ...styles.discountInputStyle,
+                    color: colors.text,
+                  }}
+                />
+              </View>
+
+              <Text
+                style={{
+                  ...styles.tbodyItem,
+                  paddingVertical: 10,
+                  color: colors.text,
+                  fontWeight: "condensedBold",
+                }}
+              >
+                300
+              </Text>
+              <View
+                style={{
+                  ...styles.tbodyItem,
+                  paddingRight: 15,
+                }}
+              >
+                <TouchableOpacity
+                onPress={() => dispatch(setCollect(true))}
+                  activeOpacity={0.8}
+                  style={[
+                    {
+                      backgroundColor: "#AF1254",
+                      paddingHorizontal: 3,
+                      paddingVertical: 3,
+                      borderRadius: 2,
+                      alignItems: "center",
+                    },
+                  ]}
+                >
+                  <Text style={[{ color: COLORS.white }]}>Collect</Text>
+                </TouchableOpacity>
+                {(fullPay === "pending" || fullPay === "active") && (
+                  <TouchableOpacity
+                  onPress={() => dispatch(setFullPay("active"))}
+                    activeOpacity={0.8}
+                    style={[
+                      {
+                        backgroundColor: "#AF1254",
+                        marginTop: 5,
+                        paddingHorizontal: 3,
+                        paddingVertical: 3,
+                        borderRadius: 2,
+                        alignItems: "center",
+                      },
+                    ]}
+                  >
+                    <Text style={[{ color: COLORS.white }]}>Full</Text>
+                  </TouchableOpacity>
+                )}
+
+                {(partialPay === "pending" || partialPay  === "active") && (
+                  <TouchableOpacity
+                  onPress={() => dispatch(setPartialPay("active"))}
+                    activeOpacity={0.8}
+                    style={[
+                      {
+                        backgroundColor: "#AF1254",
+                        marginTop: 5,
+                        paddingHorizontal: 3,
+                        paddingVertical: 3,
+                        borderRadius: 2,
+                        alignItems: "center",
+                      },
+                    ]}
+                  >
+                    <Text style={[{ color: COLORS.white }]}>Partial</Text>
+                  </TouchableOpacity>
+                )}
+
+                {fullPay === "active" && (
+                  <TextInput
+                    style={{
+                      ...styles.discountInputStyle,
+                      color: colors.text,
+                      marginTop: 5,
+                      width: "100%",
+                      paddingLeft: 5,
+                    }}
+                    readOnly
+                    value="300"
+                  />
+                )}
+
+                {partialPay === "active" && (
+                  <TextInput
+                    style={{
+                      ...styles.discountInputStyle,
+                      color: colors.text,
+                      marginTop: 5,
+                      paddingLeft: 5,
+                      width: "100%",
+                    }}
+                  />
+                )}
+
+                {(fullPay === "active" || partialPay === "active") && (
+                  <TouchableOpacity
+                  onPress={() => {
+                    dispatch(setCollect(true))
+                    alert("Your payment completed successfully")}}
+                    activeOpacity={0.8}
+                    style={[
+                      {
+                        backgroundColor: "#AF1254",
+                        marginTop: 5,
+                        paddingHorizontal: 3,
+                        paddingVertical: 3,
+                        borderRadius: 2,
+                        alignItems: "center",
+                      },
+                    ]}
+                  >
+                    <Text style={[{ color: COLORS.white }]}>Pay</Text>
+                  </TouchableOpacity>
+                )}
+              </View>
             </View>
           </View>
 
-          <View style={{ marginTop: 15 }}>
-            <CustomButton onPress={handleSearch} title={"Search"} />
+          {/* student fee details */}
+          <View
+            style={[
+              styles.card,
+              {
+                backgroundColor: colors.card,
+                marginBottom: 90,
+              },
+            ]}
+          >
+            <View
+              style={{
+                borderBottomWidth: 1,
+                borderColor: colors.border,
+                paddingBottom: 8,
+                marginBottom: 10,
+              }}
+            >
+              <Text style={{ ...FONTS.h5, color: colors.text }}>
+                Student Fee Details
+              </Text>
+            </View>
+            <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
+              <Text
+                style={{
+                  ...styles.listStyle,
+                  width: "50%",
+                  ...FONTS.font,
+                  ...FONTS.fontPoppins,
+                  color: COLORS.text,
+                }}
+              >
+                Total: 345
+              </Text>
+              <Text
+                style={{
+                  ...styles.listStyle,
+                  width: "50%",
+                  ...FONTS.font,
+                  ...FONTS.fontPoppins,
+                  color: COLORS.text,
+                }}
+              >
+                Discount: 345
+              </Text>
+              <Text
+                style={{
+                  ...styles.listStyle,
+                  width: "50%",
+                  ...FONTS.font,
+                  ...FONTS.fontPoppins,
+                  color: COLORS.text,
+                }}
+              >
+                Due: 345
+              </Text>
+              <Text
+                style={{
+                  ...styles.listStyle,
+                  width: "50%",
+                  ...FONTS.font,
+                  ...FONTS.fontPoppins,
+                  color: COLORS.text,
+                }}
+              >
+                Net Total: 345
+              </Text>
+            </View>
           </View>
         </View>
-      </View>
+      </ScrollView>
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  card: {
+    padding: 15,
+    borderRadius: SIZES.radius,
+    marginBottom: 15,
+    shadowColor: "rgba(0,0,0,.6)",
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 4.65,
+
+    elevation: 8,
+  },
+  listStyle: {
+    paddingVertical: 8,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  theadItem: {
+    flex: 1,
+    alignSelf: "stretch",
+    paddingHorizontal: 0,
+    paddingVertical: 12,
+    ...FONTS.font,
+  },
+  tbodyItem: {
+    flex: 1,
+    alignSelf: "stretch",
+    paddingHorizontal: 0,
+    paddingVertical: 8,
+    ...FONTS.font,
+  },
+  inputIcon: {
+    backgroundColor: "transparent",
+    color: COLORS.danger,
+    height: 40,
+    width: 40,
+    borderRadius: 10,
+    position: "absolute",
+    left: 5,
+    top: 5,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  inputStyle: {
+    ...FONTS.fontLg,
+    height: 50,
+    paddingLeft: 60,
+    borderWidth: 1,
+    borderRadius: SIZES.radius,
+  },
+  discountInputStyle: {
+    ...FONTS.fontLg,
+    height: 25,
+    width: 60,
+    marginLeft: 0,
+    borderWidth: 1,
+    borderColor: COLORS.darkBg,
+    borderRadius: 2,
+  },
+});
 
 export default Search;
