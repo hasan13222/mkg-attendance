@@ -142,7 +142,10 @@ import user from '../assets/images/user.png';
 import addition from '../assets/images/addition.png';
 import chat from '../assets/images/chat.png';
 import home from '../assets/images/home.png';
+import calendar from '../assets/images/calendar.png';
+import homeLn from '../assets/images/home-ln.png';
 import search from '../assets/images/search.png';
+import money from '../assets/images/money.png';
 import report from '../assets/images/to-do-list.png';
 import bgShape from '../assets/images/bg-shape.png';
 
@@ -158,7 +161,10 @@ export const IMAGES = {
 	chat,
 	user,
 	search,
-	report
+	report,
+	money,
+	homeLn, 
+	calendar,
 }
 
 // export const VIDEOS = {

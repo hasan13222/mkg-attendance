@@ -4,6 +4,7 @@ import TabLayout from "@/app/(tabs)/_layout";
 import DrawerMenu from "@/components/DrawerMenu";
 import { SafeAreaView } from "react-native";
 import { useTheme } from "@react-navigation/native";
+import { Stack } from "expo-router";
 
 const Drawer = createDrawerNavigator();
 const DrawerNavigation = (props) => {
@@ -16,14 +17,15 @@ const DrawerNavigation = (props) => {
         backgroundColor:colors.card,
     }}
     >
-      <Drawer.Navigator
+      {/* <Drawer.Navigator
         drawerContent={() => <DrawerMenu drawerProps={props}/>}
         screenOptions={{
           headerShown: false,
         }}
       >
         <Drawer.Screen name="FooterLayout" component={TabLayout} />
-      </Drawer.Navigator>
+      </Drawer.Navigator> */}
+      <TabLayout />
     </SafeAreaView>
   );
 };

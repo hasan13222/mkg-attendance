@@ -1,33 +1,27 @@
 import { useNavigation, useTheme } from '@react-navigation/native';
 import React from 'react';
 import FeatherIcon from 'react-native-vector-icons/Feather';
-import { TouchableOpacity } from 'react-native';
+import { StatusBar, TouchableOpacity } from 'react-native';
 import { View } from 'react-native';
 import { Text } from 'react-native';
 import { COLORS, FONTS } from '@/constants/theme';
+import { router } from 'expo-router';
 
-const HeaderMenu = ({drawerProps, title}) => {
+const HeaderMenu = ({ title}) => {
     const {colors} = useTheme();
     
     const navigation = useNavigation();
     return (
         <View style={{
-            height:50,
-            backgroundColor: colors.card,
+            backgroundColor: "#ff1874",
             flexDirection:'row',
             alignItems:'center',
             paddingHorizontal:5,
-            shadowColor: "rgba(0,0,0,.6)",
-            shadowOffset: {
-                width: 0,
-                height: 4,
-            },
-            shadowOpacity: 0.30,
-            shadowRadius: 4.65,
-
-            elevation: 8,
+            borderBottomLeftRadius: 25,
+            borderBottomRightRadius: 25
         }}>
-            <TouchableOpacity
+            <StatusBar />
+            {/* <TouchableOpacity
             onPress={() => drawerProps.navigation.openDrawer()}
                 style={{
                     height:50,
@@ -36,10 +30,11 @@ const HeaderMenu = ({drawerProps, title}) => {
                     justifyContent:'center',
                 }}
             >
-                <FeatherIcon color={colors.text} name='menu' size={18}/>
-            </TouchableOpacity>
-            <Text style={{...FONTS.h6,color:colors.text,flex:1}}>{title}</Text>
+                <FeatherIcon color={"white"} name='menu' size={18}/>
+            </TouchableOpacity> */}
+            <Text style={{...FONTS.h6,color:"white",flex:1, paddingLeft: 15}}>{title}</Text>
             <TouchableOpacity
+            onPress={() => router.navigate('/GeneralSMS')}
                 style={{
                     height:50,
                     width:50,
@@ -47,9 +42,9 @@ const HeaderMenu = ({drawerProps, title}) => {
                     justifyContent:'center',
                 }}
             >
-                <FeatherIcon color={colors.text} name='search' size={20}/>
+                <FeatherIcon color={"white"} name='message-square' size={20}/>
             </TouchableOpacity>
-            <TouchableOpacity
+            {/* <TouchableOpacity
                 style={{
                     height:50,
                     width:50,
@@ -73,8 +68,8 @@ const HeaderMenu = ({drawerProps, title}) => {
                 >
                     <Text style={{...FONTS.fontXs,color:COLORS.white,...FONTS.fontBold,lineHeight:17}}>9</Text>
                 </View>
-                <FeatherIcon color={colors.text} name='bell' size={20}/>
-            </TouchableOpacity>
+                <FeatherIcon color={"white"} name='bell' size={20}/>
+            </TouchableOpacity> */}
         </View>
     );
 };

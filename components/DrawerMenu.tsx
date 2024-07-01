@@ -135,6 +135,16 @@ const DrawerMenu = ({ drawerProps }) => {
                   <TouchableOpacity
                   style={{display: 'flex', gap: 10, flexDirection: 'row', alignItems: 'center'}}
                     onPress={() => {
+                      router.navigate("/SMSTemplate");
+                    }}
+                  >
+                    <FontAwesome6 size={16} color={"#bfc9da"} name={'comment-sms'}/>
+                    <Text style={{flexGrow: 1}}>SMS Template</Text>
+                    <FeatherIcon style={{marginRight: -10}} size={16} color={colors.text} name={'chevron-right'}/>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                  style={{display: 'flex', gap: 10, flexDirection: 'row', alignItems: 'center'}}
+                    onPress={() => {
                       router.navigate("/GeneralSMS");
                     }}
                   >
@@ -145,21 +155,11 @@ const DrawerMenu = ({ drawerProps }) => {
                   <TouchableOpacity
                   style={{display: 'flex', gap: 10, flexDirection: 'row', alignItems: 'center'}}
                     onPress={() => {
-                      router.navigate("/Marks");
+                      router.navigate("/NotificationSMS");
                     }}
                   >
                     <FontAwesome6 size={16} color={"#bfc9da"} name={'comment-sms'}/>
-                    <Text style={{flexGrow: 1}}>General SMS</Text>
-                    <FeatherIcon style={{marginRight: -10}} size={16} color={colors.text} name={'chevron-right'}/>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                  style={{display: 'flex', gap: 10, flexDirection: 'row', alignItems: 'center'}}
-                    onPress={() => {
-                      router.navigate("/Marks");
-                    }}
-                  >
-                    <FontAwesome6 size={16} color={"#bfc9da"} name={'comment-sms'}/>
-                    <Text style={{flexGrow: 1}}>General SMS</Text>
+                    <Text style={{flexGrow: 1}}>Notification SMS</Text>
                     <FeatherIcon style={{marginRight: -10}} size={16} color={colors.text} name={'chevron-right'}/>
                   </TouchableOpacity>
                   

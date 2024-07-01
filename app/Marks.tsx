@@ -1,17 +1,13 @@
 import React, { useState } from "react";
 import { ScrollView } from "react-native";
 import { Text, View } from "react-native";
-import { COLORS, FONTS, SIZES } from "@/constants/theme";
+import {  FONTS, SIZES } from "@/constants/theme";
+import  AntDesign  from "@expo/vector-icons/AntDesign";
 import { useTheme } from "@react-navigation/native";
 import Header from "@/components/Header";
 import { SafeAreaView } from "react-native";
 
-import Collapsible from "react-native-collapsible";
-import ListStyle1 from "@/components/ListStyle1";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import { StyleSheet } from "react-native";
-import { GlobalStyleSheet } from "@/constants/StyleSheet";
-import ListStyle2 from "@/components/ListStyle2";
 import RNPickerSelect from "react-native-picker-select";
 import CustomButton from "@/components/CustomButton";
 import { TextInput } from "react-native";
@@ -27,80 +23,112 @@ const Marks = () => {
       style={{
         flex: 1,
         backgroundColor: colors.background,
+        paddingTop: 30,
       }}
     >
       <Header
-        paddingTop={30}
-        paddingBottom={5}
+        paddingTop={0}
+        paddingBottom={8}
         title={"Marks"}
         bgWhite
         leftIcon={"back"}
       />
       <ScrollView>
-        <View style={GlobalStyleSheet.container}>
-          <View>
-            <Text style={{ fontSize: 18, paddingVertical: 10 }}>
-              Select Exam
-            </Text>
-            <View
-              style={{
-                borderColor: COLORS.darkBg,
-                borderWidth: 1,
-                borderRadius: 5,
-              }}
-            >
-              <RNPickerSelect
-                onValueChange={(value) => setSubjectVal(value)}
-                items={[
-                  { label: "First Term Exam", value: "1" },
-                  { label: "Final Exam", value: "2" },
-                ]}
-              />
+        <View style={{ padding: 15 }}>
+          <View
+            style={{
+              shadowColor: "rgba(0,0,0,0.6)",
+              shadowOpacity: 0.8,
+              shadowOffset: {
+                width: 4,
+                height: 4,
+              },
+              shadowRadius: 4.65,
+              elevation: 8,
+              padding: 15,
+              borderRadius: 10,
+              backgroundColor: "white",
+            }}
+          >
+            <View>
+              <Text style={{ fontSize: 18, paddingVertical: 10 }}>
+                Select Exam
+              </Text>
+              <View
+                style={{
+                  borderColor: "#a2a1a6",
+                  borderWidth: 1,
+                  borderRadius: 5,
+                  padding: 8,
+                  paddingLeft: 12,
+                  position: 'relative',
+                }}
+              >
+                <RNPickerSelect
+                  useNativeAndroidPickerStyle={false}
+                  style={{ placeholder: { color: "#424140" } }}
+                  onValueChange={(value) => setSubjectVal(value)}
+                  items={[
+                    { label: "First Term Exam", value: "1" },
+                    { label: "Final Exam", value: "2" },
+                  ]}
+                /><AntDesign style={{position: 'absolute', right: 15, top: 12}} name="caretdown" size={13} color={"#424140"} />
+              </View>
             </View>
-          </View>
-          <View>
-            <Text style={{ fontSize: 18, paddingVertical: 10 }}>
-              Select Subject
-            </Text>
-            <View
-              style={{
-                borderColor: COLORS.darkBg,
-                borderWidth: 1,
-                borderRadius: 5,
-              }}
-            >
-              <RNPickerSelect
-                onValueChange={(value) => setSubjectVal(value)}
-                items={[
-                  { label: "First Term Exam", value: "1" },
-                  { label: "Final Exam", value: "2" },
-                ]}
-              />
+            <View>
+              <Text style={{ fontSize: 18, paddingVertical: 10 }}>
+                Select Subject
+              </Text>
+              <View
+                style={{
+                  borderColor: "#a2a1a6",
+                  borderWidth: 1,
+                  borderRadius: 5,
+                  padding: 8,
+                  paddingLeft: 12,
+                  position: 'relative',
+                }}
+              >
+                <RNPickerSelect
+                  useNativeAndroidPickerStyle={false}
+                  style={{ placeholder: { color: "#424140" } }}
+                  onValueChange={(value) => setSubjectVal(value)}
+                  items={[
+                    { label: "First Term Exam", value: "1" },
+                    { label: "Final Exam", value: "2" },
+                  ]}
+                /><AntDesign style={{position: 'absolute', right: 15, top: 12}} name="caretdown" size={13} color={"#424140"} />
+              </View>
             </View>
-          </View>
-          <View>
-            <Text style={{ fontSize: 18, paddingVertical: 10 }}>
-              Select Class
-            </Text>
-            <View
-              style={{
-                borderColor: COLORS.darkBg,
-                borderWidth: 1,
-                borderRadius: 5,
-              }}
-            >
-              <RNPickerSelect
-                onValueChange={(value) => setSubjectVal(value)}
-                items={[
-                  { label: "First Term Exam", value: "1" },
-                  { label: "Final Exam", value: "2" },
-                ]}
-              />
+            <View>
+              <Text style={{ fontSize: 18, paddingVertical: 10 }}>
+                Select Class
+              </Text>
+              <View
+                style={{
+                  borderColor: "#a2a1a6",
+                  borderWidth: 1,
+                  borderRadius: 5,
+                  padding: 8,
+                  paddingLeft: 12,
+                  position: 'relative',
+                }}
+              >
+                <RNPickerSelect
+                  useNativeAndroidPickerStyle={false}
+                  style={{ placeholder: { color: "#424140" } }}
+                  onValueChange={(value) => setSubjectVal(value)}
+                  items={[
+                    { label: "First Term Exam", value: "1" },
+                    { label: "Final Exam", value: "2" },
+                  ]}
+                /><AntDesign style={{position: 'absolute', right: 15, top: 12}} name="caretdown" size={13} color={"#424140"} />
+              </View>
             </View>
-          </View>
 
-          <View style={{ marginTop: 15 }}>
-            <CustomButton onPress={handleSearch} title={"Search"} />
+            <View style={{ marginTop: 15 }}>
+              <CustomButton onPress={handleSearch} title={"Search"} />
+            </View>
           </View>
 
           {/* search result */}
@@ -143,8 +171,15 @@ const Marks = () => {
             </View>
 
             {/* View Marks */}
-            
-            <View style={{ borderTopWidth: 1, borderColor: colors.border, paddingVertical: 10, gap: 10 }}>
+
+            <View
+              style={{
+                borderTopWidth: 1,
+                borderColor: colors.border,
+                paddingVertical: 10,
+                gap: 10,
+              }}
+            >
               <View
                 style={{
                   flexDirection: "row",
@@ -221,7 +256,14 @@ const Marks = () => {
                 </View>
               </View>
             </View>
-            <View style={{ borderTopWidth: 1, borderColor: colors.border, paddingVertical: 10, gap: 10 }}>
+            <View
+              style={{
+                borderTopWidth: 1,
+                borderColor: colors.border,
+                paddingVertical: 10,
+                gap: 10,
+              }}
+            >
               <View
                 style={{
                   flexDirection: "row",
@@ -298,7 +340,14 @@ const Marks = () => {
                 </View>
               </View>
             </View>
-            <View style={{ borderTopWidth: 1, borderColor: colors.border, paddingVertical: 10, gap: 10 }}>
+            <View
+              style={{
+                borderTopWidth: 1,
+                borderColor: colors.border,
+                paddingVertical: 10,
+                gap: 10,
+              }}
+            >
               <View
                 style={{
                   flexDirection: "row",
@@ -375,11 +424,14 @@ const Marks = () => {
                 </View>
               </View>
             </View>
-          </View>
 
-          {/* confirm mark input */}
-          <View style={{ marginTop: 0 }}>
-            <CustomButton onPress={handleSearch} title={"Confirm Mark Input"} />
+            {/* confirm mark input */}
+            <View style={{ marginTop: 0, padding: 15 }}>
+              <CustomButton
+                onPress={handleSearch}
+                title={"Confirm Mark Input"}
+              />
+            </View>
           </View>
         </View>
       </ScrollView>
@@ -413,13 +465,15 @@ const styles = StyleSheet.create({
   },
   discountInputStyle: {
     ...FONTS.fontLg,
-    height: 21,
+    height: 30,
     width: 60,
     paddingHorizontal: 0,
+    paddingLeft: 5,
     marginLeft: 0,
     borderWidth: 1,
-    borderColor: COLORS.darkBg,
-    borderRadius: 2,
+    borderColor: "rgb(216, 216, 216)",
+    borderRadius: 5,
+
   },
 });
 

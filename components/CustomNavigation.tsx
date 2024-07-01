@@ -66,14 +66,14 @@ const CustomNavigation = ({ state, navigation, descriptors }) => {
                   }}
                   source={
                     label === "Home"
-                      ? IMAGES.home
-                      : label === "Search"
-                      ? IMAGES.search
+                      ? IMAGES.homeLn
+                      : label === "Fees"
+                      ? IMAGES.money
                       : label === "Reports"
                       ? IMAGES.report
                       : label === "Students"
                       ? IMAGES.user
-                      : label === "Profile" && IMAGES.user
+                      : label === "Attendance" && IMAGES.calendar
                   }
                 />
                 <Text

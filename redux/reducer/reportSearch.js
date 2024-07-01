@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-const today = new Date().getDate();
+const today = new Date();
 const searchOptions = {
   date: today,
   date2: today,

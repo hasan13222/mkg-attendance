@@ -12,10 +12,16 @@ import Reports from "./Reports";
 import Students from "./Students";
 import { useTheme } from "@react-navigation/native";
 import { StatusBar } from "react-native";
-import Classes from "./Classes";
+import Classes from "./(tabs)/Classes";
 import { RootState } from "@/redux/reducer";
 import Marks from "./Marks";
 import GeneralSMS from "./GeneralSMS";
+import NotificationSMS from "./NotificationSMS";
+import SMSTemplate from "./SMSTemplate";
+import HomeWork from "./HomeWork";
+import Leave from "./Leave";
+import ChangePassword from "./ChangePassword";
+import TabLayout from "./(tabs)/_layout";
 
 const RootLayout = () => {
   // const [user, setUser] = useState(true);
@@ -37,8 +43,8 @@ const RootLayout = () => {
         }}
       >
         <Stack.Screen
-          name="DrawerNavigation"
-          component={DrawerNavigation}
+          name="(tabs)"
+          component={TabLayout}
           options={{ headerShown: false }}
         />
         <Stack.Screen
@@ -52,18 +58,38 @@ const RootLayout = () => {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="Classes"
-          component={Classes}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
           name="Marks"
           component={Marks}
           options={{ headerShown: false }}
         />
         <Stack.Screen
+          name="SMSTemplate"
+          component={SMSTemplate}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
           name="GeneralSMS"
           component={GeneralSMS}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="NotificationSMS"
+          component={NotificationSMS}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="HomeWork"
+          component={HomeWork}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Leave"
+          component={Leave}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="ChangePassword"
+          component={ChangePassword}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

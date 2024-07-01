@@ -13,10 +13,11 @@ const Students = () => {
       style={{
         flex: 1,
         backgroundColor: colors.background,
+        paddingTop: 30
       }}
     >
       <Header
-        paddingTop={25}
+        paddingTop={0}
         paddingBottom={8}
         title={"Students"}
         bgWhite
@@ -27,10 +28,7 @@ const Students = () => {
           style={{
             backgroundColor: colors.card,
             borderRadius: SIZES.radius,
-            marginTop: 15,
-            marginLeft: 7,
-            marginRight: 7,
-            marginBottom: 15,
+            margin:15,
             shadowColor: "rgba(0,0,0,.6)",
             shadowOffset: {
               width: 0,

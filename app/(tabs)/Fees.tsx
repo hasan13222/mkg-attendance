@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/reducer";
 import { setShowSearchBox, setPartialPay, setFullPay, setCollect } from "@/redux/reducer/feeSearch";
 
-const Search = (props) => {
+const Fees = (props) => {
   // const [showSearchBox, setShowSearchBox] = useState(false);
   const dispatch = useDispatch();
 
@@ -511,9 +511,10 @@ const styles = StyleSheet.create({
     width: 60,
     marginLeft: 0,
     borderWidth: 1,
-    borderColor: COLORS.darkBg,
-    borderRadius: 2,
+    paddingLeft: 5,
+    borderColor: "rgb(216, 216, 216)",
+    borderRadius: 5,
   },
 });
 
-export default Search;
+export default Fees;

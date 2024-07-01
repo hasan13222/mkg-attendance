@@ -1,103 +1,94 @@
 import React, { useRef } from "react";
-import { FlatList, Image, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { ScrollView } from "react-native";
-import { dashboardSliderData } from "./../../constants/dashboardSliderData";
-import CardStyle4 from "@/components/CardStyle4";
 import {
-  DrawerLayout,
   GestureHandlerRootView,
 } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native";
-import DrawerMenu from "@/components/DrawerMenu";
-import { useTheme } from "@react-navigation/native";
 import HeaderMenu from "@/components/HeaderMenu";
-import { TouchableOpacity } from "react-native";
 import { COLORS, FONTS } from "@/constants/theme";
-import FontawesomeIcon from "@expo/vector-icons/FontAwesome";
-import { StatusBar } from "react-native";
-import { useSelector } from "react-redux";
-import { RootState } from "@/redux/reducer";
-import SignIn from "@/components/login";
+import ProfileDetails from "@/components/Home/ProfileDetails";
+import DashboardCards from "@/components/Home/DashboardCards";
+import LatestStudents from "@/components/Home/LatestStudents";
+import MainMenu from "@/components/Home/MainMenu";
+import Header from "@/components/Header";
 
 const Home = (drawerProps) => {
   const drawerRef = useRef();
-  const { colors } = useTheme();
 
-  const renderItem = ({ item }) => {
-    return (
-      <>
-        <TouchableOpacity
+  return (
+    <>
+      <GestureHandlerRootView>
+        <SafeAreaView
           style={{
-            alignItems: "center",
-            marginRight: 16,
+            backgroundColor: "rgba(248,92,111,.05)",
           }}
         >
-          <View
-            style={{
-              backgroundColor: colors.card,
-              paddingHorizontal: 18,
-              paddingVertical: 15,
-              borderRadius: 35,
-              marginBottom: 7,
-            }}
-          >
-            <FontawesomeIcon
-              size={40}
-              color={COLORS.danger}
-              name={item.iconName}
-            />
-          </View>
-          <Text style={{ ...FONTS.font, fontSize: 15, color: colors.text }}>
-            {item.title}
-          </Text>
-        </TouchableOpacity>
-      </>
-    );
-  };
+          <HeaderMenu title="School" />
+          {/* <Header title="School" messageIcon={true}/> */}
+        </SafeAreaView>
 
+        <ScrollView style={{ paddingHorizontal: 10 }}>
+          {/* profile details */}
+          <ProfileDetails />
 
-    return (
-      <>
-        {/* <StatusBar
-        backgroundColor={colors.card}
-        barStyle={"dark-content"}
-      /> */}
-        <GestureHandlerRootView>
-          <DrawerLayout
-            ref={drawerRef}
-            drawerWidth={280}
-            drawerPosition={DrawerLayout.positions.Left}
-            drawerType="front"
-            drawerBackgroundColor="#ddd"
-            renderNavigationView={() => <DrawerMenu drawerProps={drawerProps} drawer={drawerRef} />}
-          >
-            <SafeAreaView
-              style={{
-                flex: 1,
-                backgroundColor: "rgba(248,92,111,.05)",
-              }}
-            >
-              <HeaderMenu drawerProps={drawerProps} title="Home" />
-              <ScrollView>
-                <FlatList
-                  horizontal
-                  showsHorizontalScrollIndicator={false}
-                  contentContainerStyle={{
-                    paddingLeft: 15,
-                    paddingBottom: 10,
-                    paddingTop: 10,
-                  }}
-                  data={dashboardSliderData}
-                  keyExtractor={(item) => item.id}
-                  renderItem={renderItem}
-                />
-              </ScrollView>
-            </SafeAreaView>
-          </DrawerLayout>
-        </GestureHandlerRootView>
-      </>
-    );
-  
+          {/* student, attendance cards  */}
+          <DashboardCards />
+
+          {/* latest admitted students */}
+          <LatestStudents />
+
+          {/* main menu */}
+          <MainMenu />
+        </ScrollView>
+      </GestureHandlerRootView>
+    </>
+  );
 };
+
+export const HomeStyles = StyleSheet.create({
+  cardStyle: {
+    flex: 1,
+    flexDirection: "row",
+    backgroundColor: "#af12a2",
+    borderRadius: 11,
+    color: COLORS.white,
+    alignItems: "center",
+    paddingHorizontal: 10,
+    paddingVertical: 10,
+    shadowColor: "rgba(0,0,0,.5)",
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 4.65,
+
+    elevation: 8,
+  },
+});
+
+export const pickerSelectStyles = StyleSheet.create({
+  inputIOS: {
+      fontSize: 16,
+      paddingVertical: 4,
+      paddingHorizontal: 5,
+      borderWidth: 1,
+      borderColor: 'gray',
+      borderRadius: 4,
+      color: 'black',
+      paddingRight: 30 // to ensure the text is never behind the icon
+  },
+  inputAndroid: {
+      fontSize: 16,
+      paddingHorizontal: 5,
+      paddingVertical: 4,
+      borderWidth: 0.5,
+      borderColor: 'purple',
+      borderRadius: 8,
+      color: 'black',
+      paddingRight: 30 // to ensure the text is never behind the icon
+  }
+});
 
 export default Home;

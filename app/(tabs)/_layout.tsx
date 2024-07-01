@@ -5,12 +5,14 @@ import { useTheme } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import CustomNavigation from "@/components/CustomNavigation";
 import Home from ".";
-import Search from "./Search";
-import ReportSearch from "./ReportSearch";
+import Search from "./Fees";
+import ReportSearch from "../ReportSearch";
 import Profile from "./Profile";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/reducer";
 import SignIn from "@/components/login";
+import Fees from "./Fees";
+import Classes from "./Classes";
 
 const TabLayout = () => {
   const colors = useTheme();
@@ -34,19 +36,19 @@ const TabLayout = () => {
             component={Home}
           />
           <Tab.Screen
-            options={{ title: "Search" }}
-            name="Search"
-            component={Search}
+            options={{ title: "Attendance" }}
+            name="Classes"
+            component={Classes}
+          />
+          <Tab.Screen
+            options={{ title: "Fees" }}
+            name="Fees"
+            component={Fees}
           />
           <Tab.Screen
             options={{ title: "Reports" }}
             name="ReportSearch"
             component={ReportSearch}
-          />
-          <Tab.Screen
-            options={{ title: "Profile" }}
-            name="Profile"
-            component={Profile}
           />
         </Tab.Navigator>
       </SafeAreaView>

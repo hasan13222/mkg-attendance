@@ -19,8 +19,12 @@ const Header = (props) => {
           props.transparent && {
             position: "absolute",
             zIndex: 1,
-            width: "100%",
           },
+          {
+            
+            backgroundColor: "#ff1874",
+            borderRadius: 20
+          }
         ]}
       >
         <View
@@ -38,7 +42,9 @@ const Header = (props) => {
               borderBottomWidth: 0,
             },
             props.bgWhite && {
-              backgroundColor: colors.card,
+              backgroundColor: "#ff1874",
+              borderBottomLeftRadius: 25,
+              borderBottomRightRadius: 25,
               borderBottomWidth: 0,
               zIndex: 1,
             },
@@ -82,7 +88,7 @@ const Header = (props) => {
               <SvgXml
                 height={30}
                 width={30}
-                stroke={colors.text}
+                stroke={"white"}
                 xml={ICONS.close}
               />
             </TouchableOpacity>
@@ -105,15 +111,16 @@ const Header = (props) => {
             >
               <MaterialIcons
                 name="arrow-back"
-                color={props.bgImage ? COLORS.white : colors.text}
+                color={props.bgImage ? COLORS.white : COLORS.white}
                 size={22}
               />
             </TouchableOpacity>
           )}
+
           <Text
             style={[
               FONTS.h4,
-              { color: colors.text, flex: 1 },
+              { color: COLORS.white, flex: 1 },
               props.bgImage && { color: COLORS.white },
               props.titleCenter && { textAlign: "center", marginRight: 55 },
             ]}
@@ -151,6 +158,11 @@ const Header = (props) => {
               }}
             >
               <SvgXml stroke={COLORS.primary} xml={ICONS.arrowRight} />
+            </TouchableOpacity>
+          )}
+          {props.messageIcon === true && (
+            <TouchableOpacity>
+              <FeatherIcon color={"white"} name='message-square' size={20}/>
             </TouchableOpacity>
           )}
         </View>
