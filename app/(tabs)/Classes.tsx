@@ -1,10 +1,9 @@
-import React, { useRef, useState } from "react";
+import React, {  useState } from "react";
 import { useTheme } from "@react-navigation/native";
 import {
   SafeAreaView,
   ScrollView,
   StyleSheet,
-  TouchableOpacity,
   View,
 } from "react-native";
 import Collapsible from "react-native-collapsible";
@@ -13,15 +12,9 @@ import { GlobalStyleSheet } from "@/constants/StyleSheet";
 import { COLORS, SIZES } from "@/constants/theme";
 import ListStyle1 from "@/components/ListStyle1";
 
-import FeatherIcon from "react-native-vector-icons/Feather";
 import Header from "@/components/Header";
-import {
-  DrawerLayout,
-  GestureHandlerRootView,
-} from "react-native-gesture-handler";
+
 import { Link } from "expo-router";
-import HeaderMenu from "@/components/HeaderMenu";
-import DrawerMenu from "@/components/DrawerMenu";
 
 const Classes = () => {
   const { colors } = useTheme();
@@ -45,7 +38,7 @@ const Classes = () => {
             backgroundColor: colors.background,
           }}
         >
-          <Header paddingTop={30} paddingBottom={5} title={"Classes"} bgWhite leftIcon={"back"}/>
+          <Header paddingTop={0} paddingBottom={5} title={"Classes"} bgWhite leftIcon={"back"}/>
           
 
           {/* <TouchableOpacity

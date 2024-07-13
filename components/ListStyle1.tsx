@@ -15,7 +15,7 @@ const ListStyle1 = (props) => {
                 style={[styles.listStyle,{borderColor:colors.border}]}>
                 {props.icon &&
                     <View
-                        style={{marginRight:14,width:16}} 
+                        style={{marginRight:7,width:16}} 
                     >
                         { props.icon}
                     </View>

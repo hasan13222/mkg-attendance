@@ -67,6 +67,7 @@ const MainMenu = () => {
                 </RBSheet>
               )}
               <TouchableOpacity
+              key={item.id}
                 onPress={() => handleMenuRoute(item)}
                 style={{
                   alignItems: "center",

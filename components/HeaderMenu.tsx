@@ -1,11 +1,12 @@
 import { useNavigation, useTheme } from '@react-navigation/native';
 import React from 'react';
 import FeatherIcon from 'react-native-vector-icons/Feather';
-import { StatusBar, TouchableOpacity } from 'react-native';
+import { Image, StatusBar, TouchableOpacity } from 'react-native';
 import { View } from 'react-native';
 import { Text } from 'react-native';
 import { COLORS, FONTS } from '@/constants/theme';
 import { router } from 'expo-router';
+import { images } from '@/assets';
 
 const HeaderMenu = ({ title}) => {
     const {colors} = useTheme();
@@ -32,7 +33,18 @@ const HeaderMenu = ({ title}) => {
             >
                 <FeatherIcon color={"white"} name='menu' size={18}/>
             </TouchableOpacity> */}
-            <Text style={{...FONTS.h6,color:"white",flex:1, paddingLeft: 15}}>{title}</Text>
+            {/* <Text style={{...FONTS.h6,color:"white",flex:1, paddingLeft: 15}}>{title}</Text> */}
+            <View style={{flex: 1, paddingLeft: 15}}>
+            <Image
+                style={{
+                  width: 60,
+                  height: 30,
+                  objectFit: "contain",
+                }}
+                source={images.logo}
+              />
+            </View>
+            
             <TouchableOpacity
             onPress={() => router.navigate('/GeneralSMS')}
                 style={{

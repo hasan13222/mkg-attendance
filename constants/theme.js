@@ -137,7 +137,7 @@ export const ICONS = {
 import google from '../assets/images/google.png';
 import facebook from '../assets/images/facebook.png';
 import loginShape from '../assets/images/loginShape.png';
-import appLogo from '../assets/images/logo.png';
+import appLogo from '../assets/images/logo2.png';
 import user from '../assets/images/user.png';
 import addition from '../assets/images/addition.png';
 import chat from '../assets/images/chat.png';

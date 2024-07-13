@@ -67,7 +67,7 @@ const NotificationSMS = (props) => {
       <SafeAreaView style={{paddingTop: 30, backgroundColor: 'white'}}>
       <Header
           paddingTop={0}
-          paddingBottom={8}
+          paddingBottom={5}
         title={"Notification SMS"}
         bgWhite
         leftIcon={"back"}

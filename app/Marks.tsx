@@ -28,7 +28,7 @@ const Marks = () => {
     >
       <Header
         paddingTop={0}
-        paddingBottom={8}
+        paddingBottom={5}
         title={"Marks"}
         bgWhite
         leftIcon={"back"}

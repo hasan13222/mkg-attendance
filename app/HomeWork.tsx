@@ -26,7 +26,7 @@ const HomeWork = () => {
       <SafeAreaView
         style={{
           flex: 1,
-          backgroundColor: "#faf0f0",
+          backgroundColor: "#f2f2f2",
         }}
       >
         <View style={{marginTop: 30}}>

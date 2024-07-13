@@ -5,7 +5,6 @@ import feeSearch from "./feeSearch";
 import userLogin from "./userLogin";
 
 const rootReducer = combineReducers({
-   reportSearch,
    feeSearch,
    userLogin,
    [postApi.reducerPath]: postApi.reducer

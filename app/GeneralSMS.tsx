@@ -1,8 +1,7 @@
-import { GlobalStyleSheet } from "@/constants/StyleSheet";
-import { COLORS, SIZES } from "@/constants/theme";
+import { SIZES } from "@/constants/theme";
+import * as SMS from "expo-sms";
 import SectionedMultiSelect from "react-native-sectioned-multi-select";
 import { useTheme } from "@react-navigation/native";
-import FeatherIcon from "react-native-vector-icons/Feather";
 import { useState } from "react";
 import {
   Modal,
@@ -10,21 +9,15 @@ import {
   StyleSheet,
   Text,
   TextInput,
-  TouchableOpacity,
   View,
 } from "react-native";
 import { FONTS } from "./../constants/theme";
 import Header from "@/components/Header";
 import CustomButton from "@/components/CustomButton";
 import { MaterialIcons as Icon } from "@expo/vector-icons";
-import { studentsReports } from "@/constants/studentReports";
-import Report from "@/components/report";
-import { ReportStyles } from "./Reports";
 import RNPickerSelect from "react-native-picker-select";
-import { postApi } from "./../redux/reducer/test";
 
 const GeneralSMS = (props) => {
-  const [modalVisible, setModalVisible] = useState(false);
   const [category, setCategory] = useState("");
   const [template, setTemplate] = useState("");
   const [smsBody, setSmsBody] = useState("");
@@ -51,12 +44,26 @@ const GeneralSMS = (props) => {
     { name: "Class 2", id: 2 },
   ];
 
+  const handleSendSMS = async () => {
+    const isAvailable = await SMS.isAvailableAsync();
+    if (isAvailable) {
+      const { result } = await SMS.sendSMSAsync(
+        ["+8801849727154"],
+        "My sample HelloWorld message"
+      );
+      console.log(result);
+    } else {
+      // misfortune... there's no SMS available on this device
+      alert("No SMS available on this device");
+    }
+  };
+
   return (
     <>
-      <SafeAreaView style={{paddingTop: 30, backgroundColor: 'white'}}>
+      <SafeAreaView style={{ paddingTop: 30, backgroundColor: "white" }}>
         <Header
           paddingTop={0}
-          paddingBottom={8}
+          paddingBottom={5}
           title={"General SMS"}
           bgWhite
           leftIcon={"back"}
@@ -211,10 +218,7 @@ const GeneralSMS = (props) => {
               />
             </View>
 
-            <CustomButton
-              onPress={() => setModalVisible(!modalVisible)}
-              title={"Send SMS"}
-            />
+            <CustomButton onPress={handleSendSMS} title={"Send SMS"} />
           </View>
         </View>
       </SafeAreaView>

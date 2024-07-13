@@ -1,34 +1,71 @@
-import { useTheme } from "@react-navigation/native";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { useNavigation, useTheme } from "@react-navigation/native";
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 import { FONTS, SIZES } from "@/constants/theme";
 import { studentsData } from "@/constants/studentsData";
 import Header from "@/components/Header";
 import Student from "@/components/student";
+import { useEffect, useState } from "react";
+import BreadCrumb from "@/components/BreadCrumb";
+
+export type THistory = {
+  route: string;
+  routeName: string;
+}
 
 const Students = () => {
   const { colors } = useTheme();
+  
+  const [history, setHistory] = useState<THistory[]>([]);
+
+  useEffect(() => {
+    const routeHistory = [
+      {
+        route: "(tabs)",
+        routeName: "Home",
+      },
+      {
+        route: "Classes",
+        routeName: "Classes",
+      },
+      {
+        route: "Students",
+        routeName: "Students",
+      }
+    ]
+    setHistory(routeHistory);
+  }, []);
   return (
     <View
       style={{
         flex: 1,
         backgroundColor: colors.background,
-        paddingTop: 30
+        paddingTop: 30,
       }}
     >
       <Header
         paddingTop={0}
-        paddingBottom={8}
-        title={"Students"}
+        paddingBottom={5}
+        title={"Student Attendance"}
         bgWhite
         leftIcon={"back"}
       />
       <ScrollView>
+        <View style={{ paddingLeft: 15 }}>
+          <BreadCrumb items={history} />
+        </View>
+
         <View
           style={{
             backgroundColor: colors.card,
             borderRadius: SIZES.radius,
-            margin:15,
+            margin: 15,
             shadowColor: "rgba(0,0,0,.6)",
             shadowOffset: {
               width: 0,
@@ -81,7 +118,7 @@ const Students = () => {
             <Text
               style={{
                 ...StudentStyles.theadItem,
-                flex: 0.5,
+                flex: 0.6,
                 color: colors.text,
                 textAlign: "right",
                 paddingRight: 15,

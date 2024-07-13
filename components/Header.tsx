@@ -21,10 +21,9 @@ const Header = (props) => {
             zIndex: 1,
           },
           {
-            
             backgroundColor: "#ff1874",
-            borderRadius: 20
-          }
+            borderRadius: 20,
+          },
         ]}
       >
         <View
@@ -145,7 +144,7 @@ const Header = (props) => {
               <FeatherIcon name="file" color={COLORS.primary} size={22} />
             </TouchableOpacity>
           )}
-          
+
           {props.rightIcon === "next" && (
             <TouchableOpacity
               style={{
@@ -162,7 +161,7 @@ const Header = (props) => {
           )}
           {props.messageIcon === true && (
             <TouchableOpacity>
-              <FeatherIcon color={"white"} name='message-square' size={20}/>
+              <FeatherIcon color={"white"} name="message-square" size={20} />
             </TouchableOpacity>
           )}
         </View>

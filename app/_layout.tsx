@@ -22,6 +22,14 @@ import HomeWork from "./HomeWork";
 import Leave from "./Leave";
 import ChangePassword from "./ChangePassword";
 import TabLayout from "./(tabs)/_layout";
+import AcademicCalendar from "./AcademicCalendar";
+import Notice from "./Notice";
+import AddStudent from "./AddStudent";
+import Payment from "./Payment";
+import Result from "./Result";
+import ClassRoutine from "./Routine";
+import PaymentStatus from "./PaymentStatus";
+import StudentLists from "./StudentLists";
 
 const RootLayout = () => {
   // const [user, setUser] = useState(true);
@@ -33,7 +41,6 @@ const RootLayout = () => {
   const theme = useTheme();
   return (
     <Provider store={store}>
-      
       <Stack.Navigator
         detachInactiveScreens={true}
         screenOptions={{
@@ -90,6 +97,46 @@ const RootLayout = () => {
         <Stack.Screen
           name="ChangePassword"
           component={ChangePassword}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="AcademicCalendar"
+          component={AcademicCalendar}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Notice"
+          component={Notice}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="AddStudent"
+          component={AddStudent}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Payment"
+          component={Payment}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Result"
+          component={Result}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Routine"
+          component={ClassRoutine}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="PaymentStatus"
+          component={PaymentStatus}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="StudentLists"
+          component={StudentLists}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

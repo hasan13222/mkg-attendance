@@ -1,16 +1,21 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React from "react";
+import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { useTheme } from "@react-navigation/native";
-import { COLORS, FONTS, ICONS, SIZES } from "@/constants/theme";
+import { COLORS, FONTS, SIZES } from "@/constants/theme";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 
 import FeatherIcon from "react-native-vector-icons/Feather";
-import EvilIconsIcon from "react-native-vector-icons/EvilIcons";
 import FontawesomeIcon from "react-native-vector-icons/FontAwesome";
 import { TextInput } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/reducer";
-import { setShowSearchBox, setPartialPay, setFullPay, setCollect } from "@/redux/reducer/feeSearch";
+import {
+  setShowSearchBox,
+  setPartialPay,
+  setFullPay,
+  setCollect,
+} from "@/redux/reducer/feeSearch";
+import Header from "@/components/Header";
 
 const Fees = (props) => {
   // const [showSearchBox, setShowSearchBox] = useState(false);
@@ -24,6 +29,20 @@ const Fees = (props) => {
 
   return (
     <>
+      <SafeAreaView
+        style={{
+          flex: 1,
+          backgroundColor: "#f2f2f2",
+        }}
+      >
+        <Header
+          paddingTop={0}
+          paddingBottom={5}
+          title={"Fees"}
+          bgWhite
+          leftIcon={"back"}
+        />
+      </SafeAreaView>
       <ScrollView>
         <View
           style={{
@@ -275,7 +294,7 @@ const Fees = (props) => {
                 }}
               >
                 <TouchableOpacity
-                onPress={() => dispatch(setCollect(true))}
+                  onPress={() => dispatch(setCollect(true))}
                   activeOpacity={0.8}
                   style={[
                     {
@@ -291,7 +310,7 @@ const Fees = (props) => {
                 </TouchableOpacity>
                 {(fullPay === "pending" || fullPay === "active") && (
                   <TouchableOpacity
-                  onPress={() => dispatch(setFullPay("active"))}
+                    onPress={() => dispatch(setFullPay("active"))}
                     activeOpacity={0.8}
                     style={[
                       {
@@ -308,9 +327,9 @@ const Fees = (props) => {
                   </TouchableOpacity>
                 )}
 
-                {(partialPay === "pending" || partialPay  === "active") && (
+                {(partialPay === "pending" || partialPay === "active") && (
                   <TouchableOpacity
-                  onPress={() => dispatch(setPartialPay("active"))}
+                    onPress={() => dispatch(setPartialPay("active"))}
                     activeOpacity={0.8}
                     style={[
                       {
@@ -355,9 +374,10 @@ const Fees = (props) => {
 
                 {(fullPay === "active" || partialPay === "active") && (
                   <TouchableOpacity
-                  onPress={() => {
-                    dispatch(setCollect(true))
-                    alert("Your payment completed successfully")}}
+                    onPress={() => {
+                      dispatch(setCollect(true));
+                      alert("Your payment completed successfully");
+                    }}
                     activeOpacity={0.8}
                     style={[
                       {

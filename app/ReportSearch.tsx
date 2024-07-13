@@ -48,7 +48,7 @@ const ReportSearch = (props) => {
   return (
     <>
     <Header
-          paddingTop={5}
+          paddingTop={0}
           paddingBottom={5}
           title={"Search Attendance Report"}
           bgWhite

@@ -20,7 +20,7 @@ const Reports = () => {
     >
       <Header
         paddingTop={0}
-        paddingBottom={8}
+        paddingBottom={5}
         title={"Reports"}
         bgWhite
         leftIcon={"back"}

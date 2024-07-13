@@ -33,9 +33,14 @@ const ChangePassword = () => {
     return;
   }
   return (
-    <SafeAreaView>
+    <SafeAreaView
+        style={{
+          flex: 1,
+          backgroundColor: "#f2f2f2",
+        }}
+      >
       <Header
-        paddingTop={5}
+        paddingTop={0}
         paddingBottom={5}
         title={"Change Password"}
         bgWhite
@@ -45,9 +50,7 @@ const ChangePassword = () => {
         style={{
           padding: 5,
           minHeight: "100%",
-          borderTopWidth: 1,
-          borderTopColor: colors.border,
-          backgroundColor: "white",
+          backgroundColor: "transparent",
         }}
       >
         {/* Account information */}
@@ -56,8 +59,8 @@ const ChangePassword = () => {
             style={{
               fontSize: 20,
               color: colors.text,
-              marginTop: 10,
-              paddingLeft: 10,
+              marginTop: 0,
+              paddingLeft: 15,
             }}
           >
             Account information
@@ -68,6 +71,7 @@ const ChangePassword = () => {
               styles.card,
               {
                 backgroundColor: "#fff",
+                marginTop: 10
               },
             ]}
           >
@@ -141,8 +145,8 @@ const ChangePassword = () => {
             style={{
               fontSize: 20,
               color: colors.text,
-              marginTop: 10,
-              paddingLeft: 10,
+              marginTop: 0,
+              paddingLeft: 15,
             }}
           >
             Change Password
@@ -154,7 +158,7 @@ const ChangePassword = () => {
               {
                 backgroundColor: "#fff",
                 paddingVertical: 15,
-                marginTop: 20
+                marginTop: 10
               },
             ]}
           >
@@ -208,16 +212,19 @@ const ChangePassword = () => {
     </SafeAreaView>
   );
 };
+
+
 const styles = StyleSheet.create({
   card: {
     paddingHorizontal: 15,
     borderRadius: 7,
-    margin: 10,
-    shadowColor: "rgba(0,0,0,0.6)",
+    margin: 15,
+    marginTop: 0,
+    shadowColor: "rgba(0,0,0,0.8)",
     shadowOpacity: 0.8,
     shadowOffset: {
       width: 4,
-      height: 4
+      height: 4,
     },
     shadowRadius: 4.65,
     elevation: 8,
@@ -225,8 +232,6 @@ const styles = StyleSheet.create({
   listStyle: {
     borderBottomWidth: 1,
     paddingVertical: 16,
-    flexDirection: "row",
-    alignItems: "center",
   },
 });
 
