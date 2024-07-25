@@ -48,7 +48,7 @@ const SignIn = () => {
             >
               <Image
                 style={{
-                  width: 100,
+                  width: 150,
                   height: 100,
                   marginBottom: 40,
                   resizeMode: "contain",

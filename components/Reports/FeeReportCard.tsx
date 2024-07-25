@@ -1,7 +1,7 @@
+import { ReportStyles } from "@/app/AttendanceReport";
 import { Text, View } from "react-native";
-import { ReportStyles } from '../app/(tabs)/Reports';
 
-const Report = ({ data, index }) => {
+const FeeReportCard = ({ data, index }) => {
   return (
     <>
       <View
@@ -15,24 +15,13 @@ const Report = ({ data, index }) => {
         <Text
           style={{
             ...ReportStyles.tbodyItem,
-            flex: 0.4,
-            paddingLeft: 15,
-            color: "#4f4c4c",
-            fontWeight: "normal",
-          }}
-        >
-          {data.roll}
-        </Text>
-        <Text
-          numberOfLines={1}
-          style={{
-            ...ReportStyles.tbodyItem,
             flex: 1.5,
+            paddingLeft: 13,
             color: "#4f4c4c",
             fontWeight: "normal",
           }}
         >
-          {data.name}
+          {data.date}
         </Text>
         <Text
           numberOfLines={1}
@@ -42,22 +31,24 @@ const Report = ({ data, index }) => {
             fontWeight: "normal",
           }}
         >
-          {data.present}
+          {data.fee_count}
         </Text>
         <Text
           numberOfLines={1}
           style={{
             ...ReportStyles.tbodyItem,
             color: "#4f4c4c",
-            flex: 0.5,
             fontWeight: "normal",
+            textAlign: "right",
+            paddingRight: 15,
           }}
         >
-          {data.absent}
+          {data.amount}
         </Text>
+        
       </View>
     </>
   );
 };
 
-export default Report;
+export default FeeReportCard;

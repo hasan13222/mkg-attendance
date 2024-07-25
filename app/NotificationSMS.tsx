@@ -18,7 +18,7 @@ import CustomButton from "@/components/CustomButton";
 import { MaterialIcons as Icon } from "@expo/vector-icons";
 import { studentsReports } from "@/constants/studentReports";
 import Report from "@/components/report";
-import { ReportStyles } from "./Reports";
+import { ReportStyles } from "./(tabs)/Reports";
 import RNPickerSelect from "react-native-picker-select";
 import { SafeAreaView } from "react-native";
 

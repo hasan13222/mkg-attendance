@@ -5,7 +5,7 @@ import { SafeAreaView, ScrollView, Text, View } from "react-native";
 import { useState } from "react";
 import RNPickerSelect from "react-native-picker-select";
 import { SIZES } from "@/constants/theme";
-import { ReportStyles } from "./Reports";
+import { ReportStyles } from "./(tabs)/Reports";
 import { studentsData } from "@/constants/studentsData";
 import Student from "@/components/student";
 import { studentListsData } from "./../constants/studentListData";

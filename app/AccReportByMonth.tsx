@@ -1,15 +1,20 @@
 import Header from "@/components/Header";
-import { FONTS, SIZES } from "@/constants/theme";
+import { COLORS, FONTS, SIZES } from "@/constants/theme";
 import { useTheme } from "@react-navigation/native";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 
-import { studentsReports } from "@/constants/studentReports";
-import Report from "@/components/report";
-import { router } from "expo-router";
+import { feeReportData } from './../constants/feeReportData';
+import FeeReportCard from "@/components/Reports/FeeReportCard";
+import { useLocalSearchParams } from "expo-router";
+import { accByDateReportData } from './../constants/accByDateReportData';
+import AccByDateReportCard from "@/components/Reports/AccByDateReportCard";
+import { accByMonthReportData } from './../constants/accByMonthReportData';
+import AccByMonthReportCard from "@/components/Reports/AccByMonthReportCard";
 
-const Reports = () => {
+const AccReportByMonth = () => {
   const { colors } = useTheme();
+  const { year } = useLocalSearchParams();
   return (
     <View
       style={{
@@ -21,16 +26,24 @@ const Reports = () => {
       <Header
         paddingTop={0}
         paddingBottom={5}
-        title={"Reports"}
+        title={"Yearly Income Report"}
         bgWhite
         leftIcon={"back"}
       />
       <ScrollView>
+      <View style={{ justifyContent: "space-between", flexDirection: 'row', marginTop: 10 , alignItems: 'center',paddingLeft: 15}}>
+          
+
+          <Text style={{fontSize: 12, borderColor: COLORS.borderColor, padding: 3, borderRadius: 5, borderWidth: 1}}>
+            Year: {year}
+          </Text>
+        </View>
         <View
           style={{
             backgroundColor: colors.card,
             borderRadius: SIZES.radius,
             margin: 15,
+            marginTop: 5,
             shadowColor: "rgba(0,0,0,.6)",
             shadowOffset: {
               width: 0,
@@ -54,13 +67,13 @@ const Reports = () => {
             <Text
               style={{
                 ...ReportStyles.theadItem,
-                flex: 0.6,
+                flex: 1.3,
                 color: colors.text,
                 paddingLeft: 15,
                 fontWeight: "condensedBold",
               }}
             >
-              Roll
+              Year
             </Text>
             <Text
               style={{
@@ -70,31 +83,23 @@ const Reports = () => {
                 paddingLeft: 15,
               }}
             >
-              Name
+              Income
             </Text>
             <Text
               style={{
                 ...ReportStyles.theadItem,
                 color: colors.text,
                 fontWeight: "condensedBold",
-              }}
-            >
-              Present
-            </Text>
-            <Text
-              style={{
-                ...ReportStyles.theadItem,
-                flex: 0.5,
-                color: colors.text,
+                textAlign: "right",
                 paddingRight: 15,
-                fontWeight: "condensedBold",
               }}
             >
-              Absent
+              Expense
             </Text>
+            
           </View>
-          {studentsReports.map((data, index) => {
-            return <Report data={data} index={index} />;
+          {accByMonthReportData.map((data, index) => {
+            return <AccByMonthReportCard data={data} index={index} />;
           })}
         </View>
       </ScrollView>
@@ -119,4 +124,4 @@ export const ReportStyles = StyleSheet.create({
   },
 });
 
-export default Reports;
+export default AccReportByMonth;

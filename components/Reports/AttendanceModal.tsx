@@ -1,33 +1,36 @@
-import React, { useState } from "react";
-import { Text, View } from "react-native";
-import { useTheme } from "@react-navigation/native";
-import RNPickerSelect from "react-native-picker-select";
-import { COLORS, FONTS } from "@/constants/theme";
-import CustomButton from "@/components/CustomButton";
+import { RootState } from "@/redux/reducer";
+import { setAttendanceModalVisible } from "@/redux/reducer/reportSlice";
+
+import FeatherIcon from "react-native-vector-icons/Feather";
+import { Modal, Text, TouchableOpacity, View } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
+import CustomButton from "../CustomButton";
+import moment from "moment";
+import { useState } from "react";
+import { COLORS } from "@/constants/theme";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { router } from "expo-router";
-import Header from "@/components/Header";
-import moment from "moment";
+import RNPickerSelect from "react-native-picker-select";
 
-const ReportSearch = (props) => {
+const AttendanceModal = () => {
   const [date, setDate] = useState(new Date());
   const [date2, setDate2] = useState(new Date());
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [classVal, setClassVal] = useState("");
-  const [subjectVal, setSubjectVal] = useState("");
+  const [sectionVal, setSectionVal] = useState("");
 
-  // const dispatch = useDispatch();
-  // const {date, date2, classVal, subjectVal, open, open2 } = useSelector((state: RootState) => state.reportSearch)
-
-  const { colors } = useTheme();
+  const { attendanceModalVisible } = useSelector(
+    (state: RootState) => state.reportSlice
+  );
+  const dispatch = useDispatch();
 
   const handleSearch = () => {
     if (!classVal) {
       alert("Please select a class");
       return;
     }
-    if (!subjectVal) {
+    if (!sectionVal) {
       alert("Please select a subject");
       return;
     }
@@ -35,7 +38,8 @@ const ReportSearch = (props) => {
       alert("Please select a date range. your start and end date is same");
       return;
     }
-    router.navigate("/Reports");
+    router.navigate("/AttendanceReport");
+    router.setParams({classVal, sectionVal, date: moment(date).format('DD-MM-YY'), date2: moment(date2).format('DD-MM-YY')});
   };
   const handleDatePick = (e, date) => {
     setDate(date);
@@ -45,40 +49,47 @@ const ReportSearch = (props) => {
     setDate2(date);
     setOpen2(false);
   };
-
   return (
     <>
-    <Header
-          paddingTop={0}
-          paddingBottom={5}
-          title={"Search Attendance Report"}
-          bgWhite
-          leftIcon={"back"}
-        />
-      <View
-        style={{
-          paddingHorizontal: 15,
-          marginTop: 15
-        }}
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={attendanceModalVisible}
       >
-        
-        {/* title */}
-        {/* <Text
+        <View
           style={{
-            ...FONTS.h4,
-            color: colors.text,
-            borderBottomWidth: 1,
-            paddingTop: 15,
-            paddingBottom: 8,
-            marginBottom: 10,
-            borderColor: colors.border,
+            alignItems: "center",
+            justifyContent: "center",
+            flex: 1,
+            position: "relative",
           }}
         >
-          Search Attendance Report
-        </Text> */}
-
-        {/* main form */}
-        <View style={{ gap: 15, backgroundColor: 'white', borderRadius: 10, padding: 15, paddingTop: 0, shadowColor: "rgba(0,0,0,0.5)", shadowOffset: 5, elevation: 7, shadowOpacity: 3, shadowRadius: 5 }}>
+          <TouchableOpacity
+            activeOpacity={1}
+            onPress={() => dispatch(setAttendanceModalVisible())}
+            style={{
+              position: "absolute",
+              height: "100%",
+              width: "100%",
+              backgroundColor: "rgba(0,0,0,.3)",
+            }}
+          />
+        </View>
+        {/* fees search form */}
+        <View
+          style={{
+            gap: 15,
+            backgroundColor: "white",
+            borderRadius: 10,
+            padding: 15,
+            paddingTop: 0,
+            shadowColor: "rgba(0,0,0,0.5)",
+            shadowOffset: 5,
+            elevation: 7,
+            shadowOpacity: 3,
+            shadowRadius: 5,
+          }}
+        >
           {/* date range */}
           <View>
             <Text style={{ fontSize: 18, paddingVertical: 10 }}>
@@ -91,7 +102,7 @@ const ReportSearch = (props) => {
                 <Text>Start Date</Text>
                 <CustomButton
                   radius={5}
-                  title={moment(date).format('DD MMM YYYY')}
+                  title={moment(date).format("DD MMM YYYY")}
                   color={COLORS.darkBg}
                   onPress={() => setOpen(true)}
                 />
@@ -109,7 +120,7 @@ const ReportSearch = (props) => {
                 <Text>End Date</Text>
                 <CustomButton
                   radius={5}
-                  title={moment(date2).format('DD MMM YYYY')}
+                  title={moment(date2).format("DD MMM YYYY")}
                   color={COLORS.darkBg}
                   onPress={() => setOpen2(true)}
                 />
@@ -125,6 +136,7 @@ const ReportSearch = (props) => {
               </View>
             </View>
           </View>
+          
           {/* select class */}
           <View>
             <Text style={{ fontSize: 18, paddingVertical: 10 }}>
@@ -170,7 +182,7 @@ const ReportSearch = (props) => {
               }}
             >
               <RNPickerSelect
-                onValueChange={(value) => setSubjectVal(value)}
+                onValueChange={(value) => setSectionVal(value)}
                 items={[
                   { label: "section One", value: "one" },
                   { label: "section Two", value: "two" },
@@ -179,13 +191,13 @@ const ReportSearch = (props) => {
             </View>
           </View>
 
-          <View style={{ marginTop: 15 }}>
+          <View style={{ marginTop: 5 }}>
             <CustomButton onPress={handleSearch} title={"Search"} />
           </View>
         </View>
-      </View>
+      </Modal>
     </>
   );
 };
 
-export default ReportSearch;
+export default AttendanceModal;

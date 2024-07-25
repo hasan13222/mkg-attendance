@@ -1,5 +1,5 @@
 import DrawerNavigation from "@/app/DrawerNavigation";
-import Reports from "@/app/Reports";
+import Reports from "@/app/(tabs)/Reports";
 import Students from "@/app/Students";
 import { createStackNavigator } from "@react-navigation/stack";
 

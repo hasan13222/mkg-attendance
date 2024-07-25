@@ -2,12 +2,13 @@ import CustomButton from "@/components/CustomButton";
 import Header from "@/components/Header";
 import { useTheme } from "@react-navigation/native";
 import { useState } from "react";
-import { TextInput } from "react-native";
+import { Image, TextInput, TouchableOpacity } from "react-native";
 import { StyleSheet } from "react-native";
-import { Text } from "react-native";
+import AntDesignIcon from "react-native-vector-icons/AntDesign";
 import { View } from "react-native";
 import { ScrollView } from "react-native";
 import { SafeAreaView } from "react-native";
+import { images } from "@/assets";
 
 const AddStudent = () => {
   const { colors } = useTheme();
@@ -25,7 +26,7 @@ const AddStudent = () => {
   };
   return (
     <>
-      <SafeAreaView style={{paddingTop: 30,backgroundColor: "#f2f2f2",}}>
+      <SafeAreaView style={{ paddingTop: 30, backgroundColor: "#f2f2f2" }}>
         <Header
           paddingTop={0}
           paddingBottom={5}
@@ -161,6 +162,36 @@ const AddStudent = () => {
                 onChangeText={(value) => setAddress(value)}
                 placeholder="Address"
               />
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                <TouchableOpacity
+                  style={{
+                    borderColor: "#a2a1a6",
+                    borderWidth: 1,
+                    padding: 10,
+                    width: 65,
+                    borderRadius: 3,
+                    marginBottom: 10,
+                  }}
+                >
+                  <AntDesignIcon name="camera" color="#D6CA67" size={40} />
+                </TouchableOpacity>
+
+                <Image
+                  source={images.avatar1}
+                  style={{
+                    width: 65,
+                    height: 65,
+                    objectFit: "cover",
+                    borderRadius: 3,
+                  }}
+                />
+              </View>
+
               <CustomButton title="Submit" onPress={handleSubmit} />
             </View>
           </View>

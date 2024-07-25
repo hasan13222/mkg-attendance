@@ -1,11 +1,6 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { useTheme } from "@react-navigation/native";
-import {
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  View,
-} from "react-native";
+import { SafeAreaView, ScrollView, StyleSheet, View } from "react-native";
 import Collapsible from "react-native-collapsible";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { GlobalStyleSheet } from "@/constants/StyleSheet";
@@ -18,11 +13,11 @@ import { Link } from "expo-router";
 
 const Classes = () => {
   const { colors } = useTheme();
-  const [isCollapsed, setIsCollapsed] = useState(true);
-  const [isCollapsed2, setIsCollapsed2] = useState(true);
-  const [isCollapsed3, setIsCollapsed3] = useState(true);
-  const [isCollapsed4, setIsCollapsed4] = useState(true);
-  const [isCollapsed5, setIsCollapsed5] = useState(true);
+  // const [isCollapsed, setIsCollapsed] = useState(true);
+  // const [isCollapsed2, setIsCollapsed2] = useState(true);
+  // const [isCollapsed3, setIsCollapsed3] = useState(true);
+  // const [isCollapsed4, setIsCollapsed4] = useState(true);
+  // const [isCollapsed5, setIsCollapsed5] = useState(true);
 
   return (
     <>
@@ -38,8 +33,13 @@ const Classes = () => {
             backgroundColor: colors.background,
           }}
         >
-          <Header paddingTop={0} paddingBottom={5} title={"Classes"} bgWhite leftIcon={"back"}/>
-          
+          <Header
+            paddingTop={0}
+            paddingBottom={5}
+            title={"Classes"}
+            bgWhite
+            leftIcon={"back"}
+          />
 
           {/* <TouchableOpacity
                 onPress={() => drawerProps.navigation.openDrawer()}
@@ -65,91 +65,107 @@ const Classes = () => {
                 ]}
               >
                 <View>
-                  <ListStyle1
-                    arrowDown
-                    onPress={() => setIsCollapsed(!isCollapsed)}
-                    icon={
-                      <FontAwesome
-                        name={"building"}
-                        size={15}
-                        color={COLORS.red}
-                      />
-                    }
-                    title={"Class Two"}
-                  />
-                  <Collapsible collapsed={isCollapsed}>
-                    <View style={{ paddingLeft: 20 }}>
-                      <Link href={"/Students"} asChild>
-                        <ListStyle1
-                          arrowRight
-                          icon={
-                            <FontAwesome
-                              name={"book"}
-                              size={15}
-                              color={"#3b5998"}
-                            />
-                          }
-                          title={"Physics"}
+                  <Link
+                    href={{
+                      pathname: "/Students",
+                      params: { classVal: "One" },
+                    }}
+                    asChild
+                  >
+                    <ListStyle1
+                      icon={
+                        <FontAwesome
+                          name={"building"}
+                          size={15}
+                          color={COLORS.red}
                         />
-                      </Link>
-
-                      <Link href={"/Students"} asChild>
-                        <ListStyle1
-                          arrowRight
-                          icon={
-                            <FontAwesome
-                              name={"book"}
-                              size={15}
-                              color={"#3b5998"}
-                            />
-                          }
-                          title={"Physics"}
+                      }
+                      title={"Class One"}
+                    />
+                  </Link>
+                </View>
+                <View>
+                  <Link
+                    href={{
+                      pathname: "/Students",
+                      params: { classVal: "Two" },
+                    }}
+                    asChild
+                  >
+                    <ListStyle1
+                      icon={
+                        <FontAwesome
+                          name={"building"}
+                          size={15}
+                          color={COLORS.red}
                         />
-                      </Link>
-                      <Link href={"/Students"} asChild>
-                        <ListStyle1
-                          arrowRight
-                          icon={
-                            <FontAwesome
-                              name={"book"}
-                              size={15}
-                              color={"#3b5998"}
-                            />
-                          }
-                          title={"Physics"}
+                      }
+                      title={"Class Two"}
+                    />
+                  </Link>
+                </View>
+                <View>
+                  <Link
+                    href={{
+                      pathname: "/Students",
+                      params: { classVal: "Three" },
+                    }}
+                    asChild
+                  >
+                    <ListStyle1
+                      icon={
+                        <FontAwesome
+                          name={"building"}
+                          size={15}
+                          color={COLORS.red}
                         />
-                      </Link>
-                      <Link href={"/Students"} asChild>
-                        <ListStyle1
-                          arrowRight
-                          icon={
-                            <FontAwesome
-                              name={"book"}
-                              size={15}
-                              color={"#3b5998"}
-                            />
-                          }
-                          title={"Physics"}
+                      }
+                      title={"Class Three"}
+                    />
+                  </Link>
+                </View>
+                <View>
+                  <Link
+                    href={{
+                      pathname: "/Students",
+                      params: { classVal: "Four" },
+                    }}
+                    asChild
+                  >
+                    <ListStyle1
+                      icon={
+                        <FontAwesome
+                          name={"building"}
+                          size={15}
+                          color={COLORS.red}
                         />
-                      </Link>
-                      <Link href={"/Students"} asChild>
-                        <ListStyle1
-                          arrowRight
-                          icon={
-                            <FontAwesome
-                              name={"book"}
-                              size={15}
-                              color={"#3b5998"}
-                            />
-                          }
-                          title={"Physics"}
+                      }
+                      title={"Class Four"}
+                    />
+                  </Link>
+                </View>
+                <View>
+                  <Link
+                    href={{
+                      pathname: "/Students",
+                      params: { classVal: "Five" },
+                    }}
+                    asChild
+                  >
+                    <ListStyle1
+                      icon={
+                        <FontAwesome
+                          name={"building"}
+                          size={15}
+                          color={COLORS.red}
                         />
-                      </Link>
-                    </View>
-                  </Collapsible>
+                      }
+                      title={"Class Five"}
+                    />
+                  </Link>
                 </View>
 
-                <View>
+                {/* <View>
                   <ListStyle1
                     arrowDown
                     onPress={() => setIsCollapsed2(!isCollapsed2)}
@@ -164,7 +180,7 @@ const Classes = () => {
                   />
                   <Collapsible collapsed={isCollapsed2}>
                     <View style={{ paddingLeft: 20 }}>
-                      <Link href={"/Students"} asChild>
+                      <Link href={{pathname: "/Students", params: {classVal: "Six"}}} asChild>
                         <ListStyle1
                           arrowRight
                           icon={
@@ -177,7 +193,7 @@ const Classes = () => {
                           title={"Physics"}
                         />
                       </Link>
-                      <Link href={"/Students"} asChild>
+                      <Link href={{pathname: "/Students", params: {classVal: "Six"}}} asChild>
                         <ListStyle1
                           arrowRight
                           icon={
@@ -190,7 +206,7 @@ const Classes = () => {
                           title={"Physics"}
                         />
                       </Link>
-                      <Link href={"/Students"} asChild>
+                      <Link href={{pathname: "/Students", params: {classVal: "Six"}}} asChild>
                         <ListStyle1
                           arrowRight
                           icon={
@@ -203,7 +219,7 @@ const Classes = () => {
                           title={"Physics"}
                         />
                       </Link>
-                      <Link href={"/Students"} asChild>
+                      <Link href={{pathname: "/Students", params: {classVal: "Six"}}} asChild>
                         <ListStyle1
                           arrowRight
                           icon={
@@ -216,7 +232,7 @@ const Classes = () => {
                           title={"Physics"}
                         />
                       </Link>
-                      <Link href={"/Students"} asChild>
+                      <Link href={{pathname: "/Students", params: {classVal: "Six"}}} asChild>
                         <ListStyle1
                           arrowRight
                           icon={
@@ -248,7 +264,7 @@ const Classes = () => {
                   />
                   <Collapsible collapsed={isCollapsed3}>
                     <View style={{ paddingLeft: 20 }}>
-                      <Link href={"/Students"} asChild>
+                      <Link href={{pathname: "/Students", params: {classVal: "Six"}}} asChild>
                         <ListStyle1
                           arrowRight
                           icon={
@@ -261,7 +277,7 @@ const Classes = () => {
                           title={"Physics"}
                         />
                       </Link>
-                      <Link href={"/Students"} asChild>
+                      <Link href={{pathname: "/Students", params: {classVal: "Six"}}} asChild>
                         <ListStyle1
                           arrowRight
                           icon={
@@ -274,7 +290,7 @@ const Classes = () => {
                           title={"Physics"}
                         />
                       </Link>
-                      <Link href={"/Students"} asChild>
+                      <Link href={{pathname: "/Students", params: {classVal: "Six"}}} asChild>
                         <ListStyle1
                           arrowRight
                           icon={
@@ -287,7 +303,7 @@ const Classes = () => {
                           title={"Physics"}
                         />
                       </Link>
-                      <Link href={"/Students"} asChild>
+                      <Link href={{pathname: "/Students", params: {classVal: "Six"}}} asChild>
                         <ListStyle1
                           arrowRight
                           icon={
@@ -300,7 +316,7 @@ const Classes = () => {
                           title={"Physics"}
                         />
                       </Link>
-                      <Link href={"/Students"} asChild>
+                      <Link href={{pathname: "/Students", params: {classVal: "Six"}}} asChild>
                         <ListStyle1
                           arrowRight
                           icon={
@@ -332,7 +348,7 @@ const Classes = () => {
                   />
                   <Collapsible collapsed={isCollapsed4}>
                     <View style={{ paddingLeft: 20 }}>
-                      <Link href={"/Students"} asChild>
+                      <Link href={{pathname: "/Students", params: {classVal: "Six"}}} asChild>
                         <ListStyle1
                           arrowRight
                           icon={
@@ -345,7 +361,7 @@ const Classes = () => {
                           title={"Physics"}
                         />
                       </Link>
-                      <Link href={"/Students"} asChild>
+                      <Link href={{pathname: "/Students", params: {classVal: "Six"}}} asChild>
                         <ListStyle1
                           arrowRight
                           icon={
@@ -358,7 +374,7 @@ const Classes = () => {
                           title={"Physics"}
                         />
                       </Link>
-                      <Link href={"/Students"} asChild>
+                      <Link href={{pathname: "/Students", params: {classVal: "Six"}}} asChild>
                         <ListStyle1
                           arrowRight
                           icon={
@@ -371,7 +387,7 @@ const Classes = () => {
                           title={"Physics"}
                         />
                       </Link>
-                      <Link href={"/Students"} asChild>
+                      <Link href={{pathname: "/Students", params: {classVal: "Six"}}} asChild>
                         <ListStyle1
                           arrowRight
                           icon={
@@ -384,7 +400,7 @@ const Classes = () => {
                           title={"Physics"}
                         />
                       </Link>
-                      <Link href={"/Students"} asChild>
+                      <Link href={{pathname: "/Students", params: {classVal: "Six"}}} asChild>
                         <ListStyle1
                           arrowRight
                           icon={
@@ -416,7 +432,7 @@ const Classes = () => {
                   />
                   <Collapsible collapsed={isCollapsed5}>
                     <View style={{ paddingLeft: 20 }}>
-                      <Link href={"/Students"} asChild>
+                      <Link href={{pathname: "/Students", params: {classVal: "Six"}}} asChild>
                         <ListStyle1
                           arrowRight
                           icon={
@@ -429,7 +445,7 @@ const Classes = () => {
                           title={"Physics"}
                         />
                       </Link>
-                      <Link href={"/Students"} asChild>
+                      <Link href={{pathname: "/Students", params: {classVal: "Six"}}} asChild>
                         <ListStyle1
                           arrowRight
                           icon={
@@ -442,7 +458,7 @@ const Classes = () => {
                           title={"Physics"}
                         />
                       </Link>
-                      <Link href={"/Students"} asChild>
+                      <Link href={{pathname: "/Students", params: {classVal: "Six"}}} asChild>
                         <ListStyle1
                           arrowRight
                           icon={
@@ -455,7 +471,7 @@ const Classes = () => {
                           title={"Physics"}
                         />
                       </Link>
-                      <Link href={"/Students"} asChild>
+                      <Link href={{pathname: "/Students", params: {classVal: "Six"}}} asChild>
                         <ListStyle1
                           arrowRight
                           icon={
@@ -468,7 +484,7 @@ const Classes = () => {
                           title={"Physics"}
                         />
                       </Link>
-                      <Link href={"/Students"} asChild>
+                      <Link href={{pathname: "/Students", params: {classVal: "Six"}}} asChild>
                         <ListStyle1
                           arrowRight
                           icon={
@@ -483,7 +499,7 @@ const Classes = () => {
                       </Link>
                     </View>
                   </Collapsible>
-                </View>
+                </View> */}
               </View>
             </View>
           </ScrollView>

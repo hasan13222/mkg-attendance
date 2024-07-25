@@ -3,10 +3,12 @@ import reportSearch from "./reportSearch";
 import { postApi } from './test';
 import feeSearch from "./feeSearch";
 import userLogin from "./userLogin";
+import reportSlice from "./reportSlice";
 
 const rootReducer = combineReducers({
    feeSearch,
    userLogin,
+   reportSlice,
    [postApi.reducerPath]: postApi.reducer
 })
 

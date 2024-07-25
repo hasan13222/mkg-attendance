@@ -8,7 +8,7 @@ import {
   CardStyleInterpolators,
 } from "@react-navigation/stack";
 import DrawerNavigation from "./DrawerNavigation";
-import Reports from "./Reports";
+import Reports from "./(tabs)/Reports";
 import Students from "./Students";
 import { useTheme } from "@react-navigation/native";
 import { StatusBar } from "react-native";
@@ -30,6 +30,11 @@ import Result from "./Result";
 import ClassRoutine from "./Routine";
 import PaymentStatus from "./PaymentStatus";
 import StudentLists from "./StudentLists";
+import AttendanceReport from "./AttendanceReport";
+import FeesReport from "./FeesReport";
+import DueReport from "./DueReport";
+import AccReportByMonth from "./AccReportByMonth";
+import AccReportByDate from "./AccReportByDate";
 
 const RootLayout = () => {
   // const [user, setUser] = useState(true);
@@ -52,11 +57,6 @@ const RootLayout = () => {
         <Stack.Screen
           name="(tabs)"
           component={TabLayout}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Reports"
-          component={Reports}
           options={{ headerShown: false }}
         />
         <Stack.Screen
@@ -137,6 +137,31 @@ const RootLayout = () => {
         <Stack.Screen
           name="StudentLists"
           component={StudentLists}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="AttendanceReport"
+          component={AttendanceReport}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="FeesReport"
+          component={FeesReport}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="DueReport"
+          component={DueReport}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="AccReportByMonth"
+          component={AccReportByMonth}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="AccReportByDate"
+          component={AccReportByDate}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

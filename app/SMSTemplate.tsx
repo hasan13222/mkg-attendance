@@ -17,7 +17,7 @@ import Header from "@/components/Header";
 import CustomButton from "@/components/CustomButton";
 import { studentsReports } from "@/constants/studentReports";
 import Report from "@/components/report";
-import { ReportStyles } from "./Reports";
+import { ReportStyles } from "./(tabs)/Reports";
 
 const SMSTemplate = (props) => {
   const [modalVisible, setModalVisible] = useState(false);

@@ -1,11 +1,10 @@
-import { IMAGES } from "./theme";
-
 export const dashboardSliderData = [
   {
     id: "1",
     title: "Attendance",
     iconName: "calendar-check-o",
-    path: "/Students",
+    // path: "/Classes",
+    path: "/AccReportByMonth",
   },
   {
     id: "2",
@@ -17,7 +16,8 @@ export const dashboardSliderData = [
     id: "3",
     title: "Fees",
     iconName: "money",
-    path: "/Fees",
+    // path: "/Fees",
+    path: "/FeesReport",
   },
   {
     id: "4",

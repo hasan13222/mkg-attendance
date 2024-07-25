@@ -5,14 +5,12 @@ import { useTheme } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import CustomNavigation from "@/components/CustomNavigation";
 import Home from ".";
-import Search from "./Fees";
-import ReportSearch from "../ReportSearch";
-import Profile from "./Profile";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/reducer";
 import SignIn from "@/components/login";
 import Fees from "./Fees";
 import Classes from "./Classes";
+import Reports from "./Reports";
 
 const TabLayout = () => {
   const colors = useTheme();
@@ -22,7 +20,7 @@ const TabLayout = () => {
 
   if (user) {
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: colors.colors.card }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: colors.colors.card, }}>
         <Tab.Navigator
           tabBar={(props) => <CustomNavigation {...props} />}
           screenOptions={{
@@ -47,8 +45,8 @@ const TabLayout = () => {
           />
           <Tab.Screen
             options={{ title: "Reports" }}
-            name="ReportSearch"
-            component={ReportSearch}
+            name="Reports"
+            component={Reports}
           />
         </Tab.Navigator>
       </SafeAreaView>
